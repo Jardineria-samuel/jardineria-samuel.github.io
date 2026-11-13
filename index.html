@@ -13,63 +13,146 @@
 <title>Mis trabajos</title>
 <style>
 :root{--verde:#2f6b3a;--verde2:#e6f0e7;--verdeT:#2f6b3a;--tinta:#1d2420;--gris:#6b746e;--linea:#dfe5e0;--fondo:#f4f6f3;--tarjeta:#ffffff;--suave:#eef1ee;--campo:#cdd5cf;
-  --rojo:#b3362b;--rojoT:#b3362b;--naranja:#c4721f;--curso:#fff7ec;--cursoL:#f0c48c;--nota:#eef4ff;--notaL:#cfe0ff;--notaT:#24467a;--aviso:#1d2420;--avisoT:#ffffff;--blanco:#ffffff}
+  --rojo:#b3362b;--rojoT:#b3362b;--naranja:#c4721f;--curso:#fff7ec;--cursoL:#f0c48c;--nota:#eef4ff;--notaL:#cfe0ff;--notaT:#24467a;--hecho:#f1f7f2;--aviso:#1d2420;--avisoT:#ffffff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--verde:#3f8a4c;--verde2:#1f3324;--verdeT:#8fd19a;--tinta:#e7ece8;--gris:#9aa59d;--linea:#2c342e;--fondo:#121613;--tarjeta:#1b211d;--suave:#252c27;--campo:#3a443d;
-  --rojo:#c4473b;--rojoT:#f08b80;--naranja:#f0a65a;--curso:#2c2116;--cursoL:#6b4a24;--nota:#17243a;--notaL:#2a4268;--notaT:#b8d0f5;--aviso:#e7ece8;--avisoT:#121613;color-scheme:dark}}
+  --rojo:#c4473b;--rojoT:#f08b80;--naranja:#f0a65a;--curso:#2c2116;--cursoL:#6b4a24;--nota:#17243a;--notaL:#2a4268;--notaT:#b8d0f5;--hecho:#18241b;--aviso:#e7ece8;--avisoT:#121613;color-scheme:dark}}
 :root[data-theme="dark"]{--verde:#3f8a4c;--verde2:#1f3324;--verdeT:#8fd19a;--tinta:#e7ece8;--gris:#9aa59d;--linea:#2c342e;--fondo:#121613;--tarjeta:#1b211d;--suave:#252c27;--campo:#3a443d;
-  --rojo:#c4473b;--rojoT:#f08b80;--naranja:#f0a65a;--curso:#2c2116;--cursoL:#6b4a24;--nota:#17243a;--notaL:#2a4268;--notaT:#b8d0f5;--aviso:#e7ece8;--avisoT:#121613;color-scheme:dark}
+  --rojo:#c4473b;--rojoT:#f08b80;--naranja:#f0a65a;--curso:#2c2116;--cursoL:#6b4a24;--nota:#17243a;--notaL:#2a4268;--notaT:#b8d0f5;--hecho:#18241b;--aviso:#e7ece8;--avisoT:#121613;color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--fondo);color:var(--tinta);font:17px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:var(--verde);color:var(--blanco);padding:calc(14px + env(safe-area-inset-top)) 16px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
-header h1{font-size:21px;margin:0;flex:1;font-weight:650}
-header button{background:rgba(255,255,255,.16);color:var(--blanco);border:0;border-radius:10px;padding:8px 12px;font:inherit;font-size:16px}
-main{padding:14px 14px calc(90px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto}
-.tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.cli{display:flex;align-items:center;gap:12px}
-.cli .nom{font-weight:650;font-size:18px}
-.cli .sub{color:var(--gris);font-size:15px}
-.cli .info{flex:1;min-width:0}
-.debe{color:var(--rojoT);font-weight:650}
-.aldia{color:var(--verdeT);font-weight:600}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:600;background:var(--verde2);color:var(--verdeT);cursor:pointer}
-.btn.prin{background:var(--verde);color:var(--blanco)}
-.btn.rojo{background:var(--rojo);color:var(--blanco)}
+body{background:var(--fondo);color:var(--tinta);font:17px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--verde);color:#fff;display:flex;align-items:center;gap:10px;padding-block:14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header h1{font-size:21px;margin:0;flex:1;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header button{background:rgba(255,255,255,.16);color:#fff;border:0;border-radius:10px;padding:8px 12px;font:inherit;font-size:16px}
+main{padding-block:12px calc(90px + env(safe-area-inset-bottom,0px));padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px))}
+h2{font-size:14px;color:var(--gris);text-transform:uppercase;letter-spacing:.05em;margin:18px 4px 8px}
+.tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:14px;margin-bottom:10px}
+.btn{border:0;border-radius:12px;padding:10px 16px;font:inherit;font-weight:600;background:var(--verde2);color:var(--verdeT);cursor:pointer}
+.btn.prin{background:var(--verde);color:#fff}
+.btn.rojo{background:var(--rojo);color:#fff}
 .btn.suave{background:var(--suave);color:var(--tinta)}
-.btn.ancho{width:100%;padding:16px;font-size:18px}
-.btn.peq{padding:8px 12px;font-size:15px}
-.fila{display:flex;gap:10px;flex-wrap:wrap}
-.fila>.btn{flex:1}
-.encurso{background:var(--curso);border-color:var(--cursoL)}
-.encurso .grande{font-size:28px;font-weight:700;color:var(--naranja)}
-h2{font-size:15px;color:var(--gris);text-transform:uppercase;letter-spacing:.04em;margin:18px 4px 8px}
-.vacio{color:var(--gris);text-align:center;padding:30px 10px}
-.mov{display:flex;justify-content:space-between;align-items:center;padding:11px 2px;border-top:1px solid var(--linea)}
+.btn.ancho{width:100%;padding:14px}
+.fila{display:flex;gap:10px;flex-wrap:wrap}.fila>.btn{flex:1}
+.vacio{color:var(--gris);text-align:center;padding:28px 10px;background:var(--tarjeta);border:1px dashed var(--linea);border-radius:14px}
+.debe{color:var(--rojoT);font-weight:700}.aldia{color:var(--verdeT);font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+
+/* hoy */
+.dia{display:flex;align-items:center;gap:8px;margin:2px 0 10px}
+.dia button{width:42px;height:42px;border-radius:12px;border:1px solid var(--linea);background:var(--tarjeta);color:var(--tinta);font-size:22px;line-height:1}
+.dia .t{flex:1;text-align:center}
+.dia .q{font-size:13px;color:var(--gris);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.dia .f{font-size:22px;font-weight:700}
+.semana{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:14px}
+.semana button{border:1px solid var(--linea);background:var(--tarjeta);color:var(--tinta);border-radius:12px;padding:6px 0 7px;font:inherit;display:flex;flex-direction:column;align-items:center;gap:1px}
+.semana .l{font-size:12px;color:var(--gris);font-weight:600}.semana .n{font-size:17px;font-weight:700}
+.semana .p{display:flex;gap:2px;height:6px}.semana .p i{width:5px;height:5px;border-radius:50%;background:var(--verde)}
+.semana button.sel{background:var(--verde);border-color:var(--verde);color:#fff}.semana button.sel .l{color:rgba(255,255,255,.8)}.semana button.sel .p i{background:#fff}
+.semana button.hoy:not(.sel){border:2px solid var(--verde)}
+.resumen{display:flex;justify-content:space-between;margin:0 4px 8px;color:var(--gris);font-size:15px}.resumen b{color:var(--tinta)}
+.tr{display:flex;gap:12px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:12px 12px 12px 0;margin-bottom:10px}
+.tr .hora{width:66px;flex:none;text-align:right;padding:2px 10px 0 0;border-right:3px solid var(--linea)}
+.tr .hora .a{font-weight:700}.tr .hora .b{color:var(--gris);font-size:14px}
+.tr .cuerpo{flex:1;min-width:0}
+.tr .nom{font-weight:650;font-size:18px}
+.sub{color:var(--gris);font-size:15px}
+.tr .acc{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tr.curso{background:var(--curso);border-color:var(--cursoL)}.tr.curso .hora{border-right-color:var(--naranja)}
+.crono{font-size:24px;font-weight:700;color:var(--naranja)}
+.tr.hecho{background:var(--hecho)}.tr.hecho .hora{border-right-color:var(--verde)}
+.ok{color:var(--verdeT);font-weight:650}
+.imp{font-weight:700;margin-left:auto}
+.pie{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.caja{background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:12px}
+.caja .k{font-size:13px;color:var(--gris);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.caja .v{font-size:24px;font-weight:700}.caja .s{font-size:13px;color:var(--gris)}
+
+/* clientes */
+.cli{display:flex;align-items:center;gap:12px;cursor:pointer}
+.cli .info{flex:1;min-width:0}.cli .nom{font-weight:650;font-size:18px}
+.cli .der{text-align:right;white-space:nowrap}
+.buscar{position:relative;margin-bottom:12px}
+.buscar input{padding-left:40px;border-radius:12px;background:var(--tarjeta)}
+.buscar svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--gris);pointer-events:none}
+.sinres{display:none}
+.olvido{background:var(--curso);border:2px solid var(--naranja);color:var(--tinta);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.opc .sw{margin-left:8px}
+.btn.mini{padding:7px 12px;font-size:15px;white-space:nowrap;text-decoration:none;display:inline-block}
+.btn.mas{padding:7px 10px;margin-left:auto;line-height:1;background:transparent}
+.tr.no,.tr.movido{opacity:.65;background:var(--suave)}
+.seg.tres{grid-template-columns:1fr 1fr 1fr}.seg.tres button{font-size:14px;padding:9px 2px}
+.fijoT{background:var(--suave);border-color:transparent;font-weight:700;font-size:20px;text-align:center;pointer-events:none}
+.elegir{display:flex;flex-wrap:wrap;gap:6px;max-height:190px;overflow-y:auto}
+.chip.elige{cursor:pointer;font-size:15px;padding:8px 11px;margin:0;border:2px solid transparent;background:var(--suave);color:var(--tinta)}
+.chip.elige.si{border-color:var(--verde);background:var(--verde2);color:var(--verdeT)}
+.mesd{padding:0 14px}
+.mesd summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;cursor:pointer}
+.mesd summary::-webkit-details-marker{display:none}
+.mesd summary::after{content:"›";font-size:22px;color:var(--gris);transition:transform .15s;margin-left:4px}
+.mesd[open] summary::after{transform:rotate(90deg)}
+.mesd[open] summary{border-bottom:1px solid var(--linea)}
+.mesd summary .sub{margin-left:auto}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--suave);border-radius:12px;padding:4px;margin:14px 0 12px}
+.seg button{border:0;background:none;font:inherit;font-weight:600;color:var(--gris);padding:9px 0;border-radius:9px;cursor:pointer}
+.seg button.si{background:var(--tarjeta);color:var(--tinta);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.horario{border:1px solid var(--campo);border-radius:12px;overflow:hidden}
+.hd{display:flex;align-items:center;gap:10px;padding:8px 12px;min-height:52px;border-top:1px solid var(--linea)}
+.hd:first-child{border-top:0}
+.hd .dn{width:44px;font-weight:600;flex:none}
+.hd.off .dn{color:var(--gris);font-weight:500}
+.hd .hh{display:flex;align-items:center;gap:6px;flex:1;min-width:0;font-size:15px;color:var(--gris)}
+.hd .hh input{padding:7px 6px;width:auto;flex:1;min-width:0;font-size:16px}
+.sw{margin-left:auto;width:48px;height:28px;border-radius:14px;background:var(--campo);position:relative;border:0;flex:none;cursor:pointer}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.sw.si{background:var(--verde)}.sw.si::after{left:23px}
+[hidden]{display:none!important}
+.flecha{color:var(--gris);font-size:22px}
+.saldo{font-size:32px;font-weight:700}
+.mov{display:flex;justify-content:space-between;align-items:center;padding:11px 2px;border-top:1px solid var(--linea);gap:10px}
 .mov:first-child{border-top:0}
 .mov .d{color:var(--gris);font-size:14px}
-.mov .imp{font-weight:650;white-space:nowrap;margin-left:10px}
 .mov .imp.cobro{color:var(--verdeT)}
-.saldo{font-size:30px;font-weight:700}
-.nota{background:var(--nota);border:1px solid var(--notaL);color:var(--notaT);border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0}
+.fijo{display:flex;align-items:center;gap:10px;padding:9px 2px;border-top:1px solid var(--linea)}.fijo:first-child{border-top:0}
+.fijo .dd{font-weight:650;width:92px}
+.chip{display:inline-block;background:var(--verde2);color:var(--verdeT);border-radius:8px;padding:3px 8px;font-size:13px;font-weight:600;margin:2px 4px 0 0}
+.opc{display:flex;align-items:center;gap:12px;padding:14px 4px;border-top:1px solid var(--linea);cursor:pointer}.opc:first-child{border-top:0}
+.opc .ic{width:36px;height:36px;border-radius:10px;background:var(--verde2);color:var(--verdeT);display:grid;place-items:center;font-size:18px;flex:none}
+.opc .tx{flex:1}.opc .tx b{display:block;font-weight:650}.opc .tx span{color:var(--gris);font-size:14px}
+.opc.peligro .ic{background:var(--curso);color:var(--rojoT)}.opc.peligro b{color:var(--rojoT)}
+
+/* hoja */
+#capa{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:20;align-items:flex-end;justify-content:center}
+#capa.ver{display:flex}
+#hoja{background:var(--tarjeta);width:100%;max-width:560px;border-radius:18px 18px 0 0;padding-block:18px calc(28px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-height:90vh;overflow:auto}
+#hoja h3{margin:0 0 6px;font-size:20px}
 label{display:block;font-size:14px;color:var(--gris);margin:12px 2px 4px}
-input,textarea,select{width:100%;font:inherit;padding:12px;border:1px solid var(--campo);border-radius:10px;background:var(--tarjeta);color:var(--tinta)}
-textarea{min-height:70px}
+input,textarea{width:100%;font:inherit;padding:12px;border:1px solid var(--campo);border-radius:10px;background:var(--tarjeta);color:var(--tinta)}
 .dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .cuantos{display:flex;gap:8px;margin:8px 0 4px}
-.cuantos button{flex:1;padding:16px 0;font-size:22px;font-weight:700;border-radius:12px;border:2px solid var(--linea);background:var(--tarjeta);color:var(--tinta)}
-.cuantos button.si{border-color:var(--verde);background:var(--verde2);color:var(--verdeT)}
-#capa{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:20;align-items:flex-end;justify-content:center}
-#capa.ver{display:flex}
-#hoja{background:var(--tarjeta);width:100%;max-width:640px;border-radius:18px 18px 0 0;padding:18px 16px calc(84px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto}
-#hoja h3{margin:0 0 6px;font-size:20px}
-#aviso{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--aviso);color:var(--avisoT);padding:12px 18px;border-radius:12px;font-size:15px;display:none;z-index:30;max-width:90vw;text-align:center}
-.atras{background:none;border:0;color:var(--blanco);font:inherit;font-size:24px;padding:0 6px 0 0}
-.pie{color:var(--gris);font-size:13px;text-align:center;margin-top:20px}
-.marca{display:inline-block;font-size:12px;background:var(--nota);color:var(--notaT);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+.cuantos button,.dsem button{flex:1;padding:14px 0;font-size:20px;font-weight:700;border-radius:12px;border:2px solid var(--linea);background:var(--tarjeta);color:var(--tinta)}
+.dsem{display:flex;gap:6px;margin-top:6px}.dsem button{font-size:16px;padding:10px 0}
+.cuantos button.si,.dsem button.si{border-color:var(--verde);background:var(--verde2);color:var(--verdeT)}
+.nota{background:var(--nota);border:1px solid var(--notaL);color:var(--notaT);border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--tarjeta);border-top:1px solid var(--linea);padding-bottom:env(safe-area-inset-bottom,0px)}
+.barra .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.barra button{border:0;background:none;color:var(--gris);font:inherit;font-size:12px;font-weight:600;padding:8px 0 9px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+.barra svg{width:26px;height:26px}
+.barra button.si{color:var(--verdeT)}
+#aviso{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--aviso);color:var(--avisoT);padding:12px 18px;border-radius:12px;font-size:15px;display:none;z-index:30;max-width:90vw;text-align:center}
+.tr.extra .nom::after{content:""}
+.olvido .sub{color:inherit}
+.copia{display:flex;align-items:center;gap:10px}
+.copia .btn{white-space:nowrap}
 </style>
 </head>
 <body>
-<header><button class="atras" id="bAtras" hidden onclick="ir('inicio')">‹</button><h1 id="titulo">Mis trabajos</h1><button id="bAjustes" onclick="ir('ajustes')">⚙</button></header>
+<header><button id="bAtras" hidden onclick="atras()" aria-label="Atrás">‹</button><h1 id="titulo">Mis trabajos</h1></header>
 <main id="vista"></main>
+<nav class="barra"><div class="in">
+  <button data-v="hoy" onclick="pestana('hoy')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M9 15l2 2 4-4"/></svg>Hoy</button>
+  <button data-v="clientes" onclick="pestana('clientes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c2.1.7 3.5 2.8 3.5 5.7"/></svg>Clientes</button>
+  <button data-v="pagos" onclick="pestana('pagos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19"/><path d="M6.5 15h4"/></svg>Pagos</button>
+  <button data-v="ajustes" onclick="pestana('ajustes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Ajustes</button>
+</div></nav>
 <div id="capa" onclick="if(event.target.id==='capa')cerrar()"><div id="hoja"></div></div>
 <div id="aviso"></div>
 <!-- formulario para que Netlify reciba los fichajes de las casas enlazadas (no se ve) -->
@@ -80,59 +163,112 @@ textarea{min-height:70px}
 const CLAVE = "mt_datos", COLA = "mt_cola";
 // buzón de Netlify cuando la app está en otro sitio (GitHub); Pagos Particulares lo rellena al publicar. Vacío = este mismo sitio.
 const BUZON = "https://mis-trabajos-v86b.netlify.app/";
-let D = cargar();
-function cargar(){ try{ const d = JSON.parse(localStorage.getItem(CLAVE)); if(d && d.clientes) return d; }catch(e){} return {v:1, clientes:[], trabajos:[], cobros:[], enCurso:null}; }
-function guardar(){ try{ localStorage.setItem(CLAVE, JSON.stringify(D)); }catch(e){ avisar("No he podido guardar: el móvil no deja"); } }
-try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
-const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
-const cli = id => D.clientes.find(c => c.id === id);
-const eur = v => (Math.round(v*100)/100).toLocaleString("es-ES",{minimumFractionDigits: Math.abs(v%1)>0.001?2:0, maximumFractionDigits:2}) + " €";
-const num = v => (Math.round(v*100)/100).toLocaleString("es-ES",{maximumFractionDigits:2});
-const leerNum = s => { s = String(s||"").replace(/€/g,"").replace(/\s/g,"").replace(",","."); const v = parseFloat(s); return isFinite(v) ? v : NaN; };
-const hoyISO = () => { const d = new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
-const fechaTxt = f => { const d = new Date(f+"T12:00"); return d.toLocaleDateString("es-ES",{weekday:"short", day:"numeric", month:"short"}); };
-const horaTxt = ms => new Date(ms).toLocaleTimeString("es-ES",{hour:"2-digit", minute:"2-digit"});
-const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function saldo(id){ let t=0; D.trabajos.forEach(x=>{ if(x.cli===id) t+=x.importe; }); D.cobros.forEach(x=>{ if(x.cli===id) t-=x.importe; }); return Math.round(t*100)/100; }
-function avisar(t){ const a=document.getElementById("aviso"); a.textContent=t; a.style.display="block"; clearTimeout(avisar.t); avisar.t=setTimeout(()=>a.style.display="none", 3500); }
+const AVISOS = (BUZON || (location.origin + "/")) + ".netlify/functions/avisos";
 
-// ======================= casa enlazada (?casa=…) =======================
-// Un cliente puede tener una «casa enlazada»: al empezar y terminar allí se le manda la hora, cuántos sois y dónde estáis.
-// Solo eso; el resto de datos no sale nunca del móvil.
-(function enlace(){
-  const p = new URLSearchParams(location.search), casa = p.get("casa"); if(!casa) return;
-  const nombre = p.get("n") || "Casa enlazada";
-  history.replaceState(null, "", location.pathname);
-  if(D.clientes.some(c => c.casa === casa)) return;
-  anadirCasa.p = {casa, nombre};
-  setTimeout(() => hoja(`<h3>Nuevo cliente: ${esc(nombre)}</h3>
-    <div class="nota">Cuando empecéis y terminéis un trabajo en ${esc(nombre)}, se le avisa de la <b>hora</b>, <b>cuántos sois</b> y <b>dónde estáis</b> (la ubicación del móvil, si la dejas). Nada más: tus otros clientes y tus cuentas no salen de este móvil.</div>
-    <label>Precio por hora (€)</label><input id="fPre" inputmode="decimal" placeholder="por ejemplo 15">
-    <label>Cuántos soléis ir</label><input id="fPer" inputmode="numeric" value="3">
-    <div class="fila" style="margin-top:16px"><button class="btn suave" onclick="cerrar()">Ahora no</button><button class="btn prin" onclick="anadirCasa()">Añadir</button></div>`), 300);
-})();
-function anadirCasa(){
-  const casa = anadirCasa.p.casa, nombre = anadirCasa.p.nombre;
-  const pre = leerNum(document.getElementById("fPre").value), per = parseInt(document.getElementById("fPer").value) || 1;
-  D.clientes.push({id:uid(), nombre, tel:"", precio: isFinite(pre)?pre:0, personas: per, notas:"", casa});
-  guardar(); cerrar(); pintar(); avisar("Añadido " + nombre);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+const pad = n => String(n).padStart(2,"0");
+const iso = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
+const deIso = s => new Date(s + "T12:00");
+const hoy = () => { const d = new Date(); d.setHours(12,0,0,0); return d; };
+const hhmm = d => pad(d.getHours()) + ":" + pad(d.getMinutes());
+const mins = h => { const [a,b] = String(h).split(":").map(Number); return a*60 + (b||0); };
+const dow = d => (d.getDay()+6)%7;
+
+function cargar(){
+  let d = null; try{ d = JSON.parse(localStorage.getItem(CLAVE)); }catch(e){}
+  if(!d || !d.clientes) d = {clientes:[], trabajos:[], cobros:[]};
+  if(d.v !== 2){
+    // versión 1 → 2: los trabajos guardaban la hora en milisegundos y no había horarios
+    d.clientes.forEach(c => { c.dias = c.dias || {}; c.freq = c.freq || 1; c.dir = c.dir || ""; c.hist = c.hist || []; c.personas = c.personas || 1; });
+    d.trabajos.forEach(t => { if(typeof t.ini === "number") t.ini = hhmm(new Date(t.ini)); if(typeof t.fin === "number") t.fin = hhmm(new Date(t.fin)); });
+    d.enCurso = null; d.v = 2;
+  }
+  d.cobros = d.cobros || []; d.estado = d.estado || {}; d.extras = d.extras || [];
+  if(d.avisos === undefined) d.avisos = true;
+  if(!d.disp) d.disp = uid() + uid();
+  if(!d.creado) d.creado = Date.now();
+  return d;
+}
+let D = cargar();
+function guardar(){ try{ localStorage.setItem(CLAVE, JSON.stringify(D)); }catch(e){ avisar("No he podido guardar: el móvil no deja"); } }
+
+const cli = id => D.clientes.find(c => c.id === id);
+const eur = n => { const r = Math.round(n*100)/100, [e,dd] = Math.abs(r).toFixed(2).split("."); return (r<0?"−":"") + e.replace(/\B(?=(\d{3})+(?!\d))/g,".") + (dd!=="00" ? ","+dd : "") + " €"; };
+const hTxt = n => (Math.round(n*100)/100).toLocaleString("es-ES") + " h";
+const leerNum = s => { s = String(s||"").replace(/€/g,"").replace(/\s/g,"").replace(",","."); const v = parseFloat(s); return isFinite(v) ? v : NaN; };
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const sinAcentos = t => String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const DIAS = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"], CORTO = ["L","M","X","J","V","S","D"];
+const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const fTxt = d => DIAS[dow(d)].toLowerCase() + " " + d.getDate() + " de " + MESES[d.getMonth()];
+const fCorta = s => { const d = deIso(s); return pad(d.getDate()) + "/" + pad(d.getMonth()+1) + (d.getFullYear() !== hoy().getFullYear() ? "/" + String(d.getFullYear()).slice(2) : ""); };
+const mesNombre = k => { const [y,m] = k.split("-").map(Number); const n = MESES[m-1]; return n[0].toUpperCase() + n.slice(1) + (y !== hoy().getFullYear() ? " " + y : ""); };
+const FREQ = {1:"Cada semana", 2:"Cada 2 semanas", mes:"Una vez al mes"};
+const personasTxt = n => n + (n>1 ? " personas" : " persona");
+function avisar(t){ const a = document.getElementById("aviso"); a.textContent = t; a.style.display = "block"; clearTimeout(avisar.t); avisar.t = setTimeout(() => a.style.display = "none", 3000); }
+
+// ======================= agenda: qué toca cada día =======================
+function lunesDe(d){ const l = new Date(d); l.setHours(12,0,0,0); l.setDate(l.getDate() - dow(l)); return l; }
+function toca(c, d){
+  if(!c.dias || !c.dias[dow(d)]) return false;
+  if(c.freq === 2 && c.desde) return Math.round((lunesDe(d) - lunesDe(deIso(c.desde))) / (7*864e5)) % 2 === 0;
+  if(c.freq === "mes") return d.getDate() <= 7;
+  return true;
+}
+// trabajos de un día: los fijos que tocan y los que se han pasado a ese día
+function delDia(d){
+  const f = iso(d);
+  return [
+    ...D.clientes.filter(c => toca(c, d)).map(c => ({c, h: c.dias[dow(d)], k: f + "|" + c.id})),
+    ...D.extras.filter(x => x.fecha === f && cli(x.cli)).map(x => ({c: cli(x.cli), h: [x.ini, x.fin], k: f + "|" + x.cli + "|" + x.id, extra: x}))
+  ].sort((a,b) => mins(a.h[0]) - mins(b.h[0]));
+}
+const cuenta = x => { const e = D.estado[x.k]; return !e || (e.st !== "no" && e.st !== "movido"); };
+const fijosTxt = c => Object.keys(c.dias||{}).sort().map(k => DIAS[k].slice(0,3).toLowerCase() + " " + c.dias[k][0] + "–" + c.dias[k][1] + (c.freq===2 ? " · cada 2 sem." : c.freq==="mes" ? " · 1 al mes" : ""));
+
+// ======================= dinero =======================
+function debe(id){ let t = 0; D.trabajos.forEach(x => { if(x.cli===id) t += x.importe; }); D.cobros.forEach(x => { if(x.cli===id) t -= x.importe; }); return Math.round(t*100)/100; }
+// meses de un cliente: lo apuntado y cuánto está pagado (lo que paga tapa primero lo más antiguo)
+function mesesDe(id){
+  const ms = {};
+  for(const t of D.trabajos.filter(t => t.cli===id)){ const m = t.fecha.slice(0,7); (ms[m] = ms[m] || {m, imp:0, n:0, pag:0, el:null}); ms[m].imp += t.importe; if(!t.mat) ms[m].n++; }
+  const l = Object.values(ms).sort((a,b) => a.m < b.m ? -1 : 1);
+  const pagos = D.cobros.filter(c => c.cli===id).sort((a,b) => a.fecha < b.fecha ? -1 : 1);
+  let resto = 0, pi = 0;
+  for(const x of l){
+    while(resto < x.imp - 0.001 && pi < pagos.length){ resto += pagos[pi].importe; x.el = pagos[pi].fecha; pi++; }
+    x.pag = Math.min(resto, x.imp); resto -= x.pag; if(x.pag < 0.001) x.el = null;
+  }
+  return l.reverse();
+}
+function estadoMes(x){
+  if(x.imp - x.pag < 0.01) return `<span class="aldia">✓ Pagado</span>${x.el ? `<div class="sub">el ${fCorta(x.el)}</div>` : ""}`;
+  if(x.pag > 0.01) return `<span class="debe num">Faltan ${eur(x.imp-x.pag)}</span><div class="sub">pagó ${eur(x.pag)}</div>`;
+  return `<span class="debe num">Debe ${eur(x.imp)}</span><div class="sub">sin pagar</div>`;
 }
 
-// ======================= fichajes a la casa enlazada =======================
+// ======================= casa enlazada (?casa=…) =======================
+// Un cliente puede tener una «casa enlazada»: al empezar y terminar allí se le manda la hora, cuántos sois y dónde estáis. Nada más.
+(function enlace(){
+  const p = new URLSearchParams(location.search), casa = p.get("casa"); if(!casa) return;
+  const nombre = (p.get("n") || "Casa").slice(0, 60);
+  history.replaceState(null, "", location.pathname);
+  if(D.clientes.some(c => c.casa === casa)) return;
+  setTimeout(() => editarCliente(null, {nombre, casa}), 300);
+})();
 function ubicacion(){
   return new Promise(res => {
     if(!navigator.geolocation) return res(null);
     navigator.geolocation.getCurrentPosition(p => res(p.coords), () => res(null), {enableHighAccuracy:true, timeout:15000, maximumAge:60000});
   });
 }
-async function fichar(c, tipo, personas, ms){
-  if(!c.casa) return;
-  const pos = await ubicacion();
+async function fichar(c, tipo, personas, ms, sinSitio){
+  if(!c || !c.casa) return;
+  const pos = sinSitio ? null : await ubicacion();
   const f = {id: uid(), casa: c.casa, tipo, hora: new Date(ms).toISOString(), personas: String(personas),
              lat: pos ? pos.latitude.toFixed(6) : "", lon: pos ? pos.longitude.toFixed(6) : "", prec: pos ? Math.round(pos.accuracy) : ""};
   const cola = leerCola(); cola.push(f); try{ localStorage.setItem(COLA, JSON.stringify(cola)); }catch(e){}
-  const ok = await mandarCola();
-  avisar(ok ? "Avisado a " + c.nombre + (pos ? "" : " (sin ubicación)") : "Sin conexión: se avisará a " + c.nombre + " en cuanto haya internet");
+  await mandarCola();
 }
 function leerCola(){ try{ return JSON.parse(localStorage.getItem(COLA)) || []; }catch(e){ return []; } }
 async function mandarCola(){
@@ -146,123 +282,255 @@ async function mandarCola(){
   try{ localStorage.setItem(COLA, JSON.stringify(quedan)); }catch(e){}
   return quedan.length === 0;
 }
-window.addEventListener("online", mandarCola);
-setTimeout(mandarCola, 2000);
 
-// ======================= trabajar: empezar / terminar =======================
-function empezar(id){
-  const c = cli(id); if(D.enCurso){ avisar("Ya estás trabajando en " + (cli(D.enCurso.cli)||{}).nombre); return; }
-  let n = c.personas || 1;
-  hoja(`<h3>Empezar en ${esc(c.nombre)}</h3><label>¿Cuántos sois?</label>
-    <div class="cuantos" id="cu">${[1,2,3,4,5].map(i=>`<button class="${i===n?"si":""}" onclick="elegir(this,${i})">${i}</button>`).join("")}</div>
-    ${c.casa ? `<div class="nota">Se avisa a ${esc(c.nombre)} de la hora, cuántos sois y dónde estáis.</div>` : ""}
-    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="empezarYa('${id}')">▶ Empezar</button></div>`);
-  elegir.n = n;
+// ======================= avisos «se te olvidó ■» =======================
+// Al empezar se le dice al servidor a qué hora tenía que acabar (sin nombres); si a la hora siguiente sigue en marcha, avisa, y luego cada hora.
+const puedeAvisar = () => "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+async function pedirAvisos(datos){
+  const r = await fetch(AVISOS, {method:"POST", headers:{"Content-Type":"text/plain"}, body: JSON.stringify(datos)});
+  if(!r.ok) throw new Error("avisos " + r.status); return r.json();
 }
-function elegir(b, i){ elegir.n = i; b.parentNode.querySelectorAll("button").forEach(x => x.classList.toggle("si", x===b)); }
-function empezarYa(id){
-  const ms = Date.now(); D.enCurso = {cli:id, ini: ms, personas: elegir.n}; guardar(); cerrar(); pintar();
-  fichar(cli(id), "llegada", elegir.n, ms);
+function b64(s){ s = s.replace(/-/g,"+").replace(/_/g,"/"); while(s.length % 4) s += "="; const b = atob(s), a = new Uint8Array(b.length); for(let i=0;i<b.length;i++) a[i] = b.charCodeAt(i); return a; }
+async function suscripcion(){
+  if(!puedeAvisar() || !D.avisos) return null;
+  if(Notification.permission === "default"){ try{ await Notification.requestPermission(); }catch(e){} }
+  if(Notification.permission !== "granted") return null;
+  const reg = await navigator.serviceWorker.ready;
+  let sub = await reg.pushManager.getSubscription();
+  if(!sub){ const {clave} = await pedirAvisos({accion:"clave"}); sub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey: b64(clave)}); }
+  return sub;
+}
+async function avisosEmpezar(){
+  const e = D.enCurso, fin = finPrevisto(e); if(!fin) return;
+  try{
+    const sub = await suscripcion(); if(!sub) return;
+    await pedirAvisos({accion:"empezar", id: D.disp, sub: sub.toJSON(), fin, iniTxt: hhmm(new Date(e.ini)), finTxt: e.pr[1]});
+    D.avisoPendiente = null; guardar();
+  }catch(err){}
+}
+async function avisosTerminar(){
+  if(!puedeAvisar()) return;
+  try{ await pedirAvisos({accion:"terminar", id: D.disp}); D.avisoPendiente = null; }catch(e){ D.avisoPendiente = "terminar"; }
+  guardar();
+}
+window.addEventListener("online", () => { mandarCola(); if(D.avisoPendiente === "terminar" && !D.enCurso) avisosTerminar(); });
+setTimeout(() => { mandarCola(); if(D.avisoPendiente === "terminar" && !D.enCurso) avisosTerminar(); }, 2000);
+
+// ======================= trabajar =======================
+// hora a la que tenía que acabar (ms): la del horario, o si empezó tarde, lo que dura después de empezar
+function finPrevisto(e){
+  if(!e || !e.pr) return null;
+  const d = deIso(e.fecha); d.setHours(0, mins(e.pr[1]), 0, 0);
+  return Math.max(d.getTime(), e.ini + (mins(e.pr[1]) - mins(e.pr[0])) * 60000);
+}
+function olvidado(){ const e = D.enCurso, f = finPrevisto(e); return f && Date.now() > f + 3600000 ? e : null; }
+function empezar(k){
+  if(D.enCurso){ hoja(`<h3>Antes termina el otro</h3><div class="sub">Tienes en marcha <b style="color:var(--tinta)">${esc((cli(D.enCurso.cli)||{}).nombre)}</b>. Pulsa ■ Terminar en ese trabajo y luego podrás empezar este.</div>
+    <button class="btn prin ancho" style="margin-top:16px" onclick="cerrar()">Entendido</button>`); return; }
+  const x = buscarK(k); if(!x) return;
+  elegir.n = x.c.personas || 1;
+  hoja(`<h3>Empezar en ${esc(x.c.nombre)}</h3><label>¿Cuántos sois?</label>
+    <div class="cuantos">${[1,2,3,4,5].map(i=>`<button class="${i===elegir.n?"si":""}" onclick="elegir(this,${i})">${i}</button>`).join("")}</div>
+    ${x.c.casa ? `<div class="nota">Se avisa a ${esc(x.c.nombre)} de la hora, cuántos sois y dónde estáis.</div>` : ""}
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="empezarYa('${k}')">▶ Empezar</button></div>`);
+}
+function elegir(b, i){ elegir.n = i; b.parentNode.querySelectorAll("button").forEach(x => x.classList.toggle("si", x===b)); if(document.getElementById("tTot")) calc(); }
+function buscarK(k){ const [f] = k.split("|"); return delDia(deIso(f)).find(x => x.k === k); }
+function empezarYa(k){
+  const x = buscarK(k); if(!x || D.enCurso) return;
+  D.enCurso = {k, cli: x.c.id, fecha: k.split("|")[0], ini: Date.now(), personas: elegir.n, pr: [x.h[0], x.h[1]]};
+  guardar(); cerrar(); pintar(); avisar("En marcha: " + x.c.nombre);
+  avisosEmpezar();
+  fichar(x.c, "llegada", elegir.n, D.enCurso.ini);
 }
 function terminar(){
-  const e = D.enCurso; if(!e) return; const c = cli(e.cli); const fin = Date.now();
-  let h = Math.max(0.25, Math.round((fin - e.ini) / 900000) / 4);   // al cuarto de hora
-  hoja(`<h3>Terminar en ${esc(c.nombre)}</h3>
-    <div class="d" style="color:var(--gris)">Empezasteis a las ${horaTxt(e.ini)}; ahora son las ${horaTxt(fin)}.</div>
-    <label>¿Cuántos habéis sido?</label>
-    <div class="cuantos">${[1,2,3,4,5].map(i=>`<button class="${i===e.personas?"si":""}" onclick="elegir(this,${i});calc()">${i}</button>`).join("")}</div>
-    <div class="dos"><div><label>Horas (cada uno)</label><input id="fH" inputmode="decimal" value="${num(h)}" oninput="calc()"></div>
-    <div><label>Precio por hora (€)</label><input id="fP" inputmode="decimal" value="${num(c.precio||0)}" oninput="calc()"></div></div>
-    <label>Importe (€)</label><input id="fI" inputmode="decimal">
-    <label>Nota</label><input id="fN" placeholder="opcional">
-    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Volver</button><button class="btn rojo" onclick="terminarYa(${fin})">■ Terminar</button></div>
-    <div style="text-align:center;margin-top:10px"><button class="btn peq suave" onclick="cancelarTrabajo()">Descartar (no apuntar nada)</button></div>`);
-  elegir.n = e.personas; calc();
+  const e = D.enCurso; if(!e) return; const c = cli(e.cli);
+  elegir.n = e.personas;
+  const fin = new Date();
+  hoja(`<h3>Terminar en ${esc(c ? c.nombre : "")}</h3>
+    <div class="dos"><div><label>Empezasteis</label><input type="text" value="${hhmm(new Date(e.ini))}" readonly class="fijoT"></div><div><label>Termináis</label><input type="text" value="${hhmm(fin)}" readonly class="fijoT"></div></div>
+    <label>¿Cuántos erais?</label>
+    <div class="cuantos">${[1,2,3,4,5].map(i=>`<button class="${i===e.personas?"si":""}" onclick="elegir(this,${i})">${i}</button>`).join("")}</div>
+    <div class="nota" id="tTot" style="font-size:16px"></div>
+    <div class="fila" style="margin-top:6px"><button class="btn suave" onclick="cerrar()">Volver</button><button class="btn rojo" onclick="terminarYa(${fin.getTime()})">■ Terminar</button></div>`);
+  calc();
 }
-function calc(){ const h=leerNum(document.getElementById("fH").value), p=leerNum(document.getElementById("fP").value); if(isFinite(h)&&isFinite(p)) document.getElementById("fI").value = num(h*p*(elegir.n||1)); }
-function terminarYa(fin){
-  const e = D.enCurso, c = cli(e.cli);
-  const h = leerNum(document.getElementById("fH").value), imp = leerNum(document.getElementById("fI").value);
-  if(!isFinite(h) || !isFinite(imp)){ avisar("Pon las horas y el importe"); return; }
-  const d = new Date(e.ini), f = d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-  D.trabajos.push({id:uid(), cli:c.id, fecha:f, ini:e.ini, fin, horas:h, personas:elegir.n, importe:imp, nota:document.getElementById("fN").value.trim()});
-  const per = elegir.n; D.enCurso = null; guardar(); cerrar(); pintar();
-  fichar(c, "salida", per, fin);
+const realDe = (ini, fin) => Math.max(0.25, Math.round((fin - ini) / 900000) / 4);   // en cuartos de hora
+const contratado = (e, c) => e.pr ? (mins(e.pr[1]) - mins(e.pr[0])) / 60 * (c.personas || 1) : null;
+function calc(){
+  const e = D.enCurso, c = cli(e.cli), h = realDe(e.ini, Date.now()), n = elegir.n, ct = contratado(e, c);
+  document.getElementById("tTot").innerHTML = `Habéis estado ${hTxt(h)} × ${personasTxt(n)} = ${hTxt(h*n)}` +
+    (ct != null ? `<br><b>Se le cobra lo contratado: ${hTxt(ct)}</b>` : `<br><b>Se le cobra eso: ${hTxt(h*n)}</b>`);
 }
-function cancelarTrabajo(){ preguntar("¿Descartar este trabajo sin apuntarlo?", "Descartar", () => { D.enCurso = null; guardar(); pintar(); }); }
+function apuntar(e, finMs, personas){
+  const c = cli(e.cli); if(!c) return;
+  const real = realDe(e.ini, finMs) * personas, ct = contratado(e, c), horas = ct != null ? ct : real;
+  const t = {id: uid(), cli: c.id, fecha: e.fecha, ini: hhmm(new Date(e.ini)), fin: hhmm(new Date(finMs)), personas, horas, real, importe: Math.round(horas * c.precio * 100)/100, k: e.k};
+  D.trabajos.push(t); D.estado[e.k] = {st: "hecho", t: t.id}; D.enCurso = null;
+  return c;
+}
+function terminarYa(finMs){
+  const e = D.enCurso; if(!e) return;
+  const c = apuntar(e, finMs, elegir.n);
+  guardar(); cerrar(); pintar(); avisar("Apuntado" + (c ? " en " + c.nombre : ""));
+  avisosTerminar(); fichar(c, "salida", elegir.n, finMs);
+}
+function terminarPrevisto(){
+  const e = D.enCurso; if(!e) return;
+  const d = deIso(e.fecha); d.setHours(0, mins(e.pr[1]), 0, 0);
+  const finMs = Math.max(d.getTime(), e.ini + 60000);
+  const c = apuntar(e, finMs, e.personas);
+  guardar(); pintar(); avisar("Terminado a las " + hhmm(new Date(finMs)));
+  avisosTerminar(); fichar(c, "salida", e.personas, finMs, true);
+}
+function reloj(){ document.querySelectorAll(".crono").forEach(r => { if(!D.enCurso) return; const m = Math.floor((Date.now() - D.enCurso.ini)/60000); r.textContent = Math.floor(m/60) + ":" + pad(m%60); }); }
+setInterval(reloj, 15000);
+document.addEventListener("visibilitychange", () => { if(!document.hidden) pintar(); });
 
-// ======================= altas y apuntes a mano =======================
-function editarCliente(id){
-  const c = id ? cli(id) : {nombre:"", tel:"", precio:"", personas:1, notas:""};
+// ⚠ en un trabajo: no se va, o pasarlo a otro día
+function cambiarDia(k){
+  const x = buscarK(k); if(!x) return; cambiarDia.m = "";
+  const man = deIso(k.split("|")[0]); man.setDate(man.getDate()+1);
+  hoja(`<h3>${esc(x.c.nombre)}</h3><div class="sub">${fTxt(deIso(k.split("|")[0]))} · ${x.h[0]} a ${x.h[1]}</div>
+    <h2 style="margin-top:16px">No se va</h2>
+    <div class="elegir">${["Lluvia","Festivo","Vacaciones","Lo ha anulado el cliente","Otro"].map(m=>`<span class="chip elige" onclick="cambiarDia.m='${m}';document.querySelectorAll('.elige').forEach(e=>e.classList.toggle('si',e===this))">${m}</span>`).join("")}</div>
+    <button class="btn ancho" style="margin-top:10px" onclick="noSeVa('${k}')">✕ Este día no se va</button>
+    <div class="sub" style="margin:6px 2px 0">No cuenta para nada: ni horas ni dinero.</div>
+    <h2 style="margin-top:20px">Pasarlo a otro día</h2>
+    <div class="dos"><div><label>Día</label><input type="date" id="cdD" value="${iso(man)}"></div><div><label>Hora</label><input type="time" id="cdH" value="${x.h[0]}"></div></div>
+    <button class="btn prin ancho" style="margin-top:10px" onclick="pasarDia('${k}')">↷ Pasarlo a ese día</button>
+    <button class="btn suave ancho" style="margin-top:14px" onclick="cerrar()">Cancelar</button>`);
+}
+function noSeVa(k){ D.estado[k] = {st:"no", motivo: cambiarDia.m}; guardar(); cerrar(); pintar(); avisar("Apuntado: no se va"); }
+function pasarDia(k){
+  const x = buscarK(k), v = document.getElementById("cdD").value; if(!x) return; if(!v){ avisar("Elige el día"); return; }
+  const ini = document.getElementById("cdH").value || x.h[0], dur = mins(x.h[1]) - mins(x.h[0]), f = mins(ini) + dur;
+  const fin = pad(Math.floor(f/60) % 24) + ":" + pad(f % 60);
+  D.extras.push({id: uid(), cli: x.c.id, fecha: v, ini, fin, de: k});
+  D.estado[k] = {st:"movido", a: v};
+  guardar(); cerrar(); pintar(); avisar("Pasado al " + fTxt(deIso(v)));
+}
+function deshacer(k){
+  D.extras = D.extras.filter(x => x.de !== k);
+  delete D.estado[k]; guardar(); pintar();
+}
+
+// ======================= apuntes a mano =======================
+function trabajoMano(pre){
+  trabajoMano.cli = pre || null;
+  const chips = [...D.clientes].sort((a,b) => a.nombre.localeCompare(b.nombre,"es")).map(c => `<span class="chip elige${c.id===pre?" si":""}" data-n="${esc(sinAcentos(c.nombre+" "+(c.dir||"")))}" onclick="trabajoMano.cli='${c.id}';document.querySelectorAll('.elige').forEach(e=>e.classList.toggle('si',e===this))">${esc(c.nombre)}</span>`).join("");
+  const f = vista === "hoy" ? iso(sel) : iso(hoy());
+  hoja(`<h3>Trabajo fuera de lo previsto</h3>
+    <label>Día</label><input type="date" id="mF" value="${f}">
+    <label>Cliente</label>${pre ? "" : `<div class="buscar" style="margin-bottom:8px">${LUPA}<input type="search" placeholder="Buscar cliente" oninput="filtrar(this.value)" autocomplete="off"></div>`}
+    <div class="elegir">${chips || `<span class="sub">Primero da de alta algún cliente.</span>`}<div class="sub sinres" style="padding:6px 2px">Ningún cliente se llama así.</div></div>
+    <div class="dos"><div><label>Horas</label><input id="mH" inputmode="decimal" value="2"></div><div><label>Personas</label><input id="mP" inputmode="numeric" value="${pre ? (cli(pre).personas||1) : 1}"></div></div>
+    <label>Nota</label><input id="mN" placeholder="por ejemplo poda del seto">
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarMano()">Guardar</button></div>`);
+}
+function guardarMano(){
+  const id = trabajoMano.cli, c = cli(id); if(!c){ avisar("Elige el cliente"); return; }
+  const h = leerNum(document.getElementById("mH").value), p = parseInt(document.getElementById("mP").value) || 1, f = document.getElementById("mF").value || iso(hoy());
+  if(!(h > 0)){ avisar("Pon las horas"); return; }
+  const horas = h * p;
+  D.trabajos.push({id: uid(), cli: id, fecha: f, personas: p, horas, real: horas, importe: Math.round(horas * c.precio * 100)/100, nota: document.getElementById("mN").value.trim()});
+  guardar(); cerrar(); pintar(); avisar("Apuntado: " + hTxt(horas) + " en " + c.nombre);
+}
+function material(id, fecha){
+  const c = cli(id);
+  hoja(`<h3>Material para ${esc(c.nombre)}</h3><div class="sub">Se suma a lo que te debe, aparte de las horas.</div>
+    <label>Qué es</label><input id="maC" placeholder="por ejemplo 2 sacos de abono">
+    <label>Importe (€)</label><input id="maI" inputmode="decimal">
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarMat('${id}','${fecha || iso(hoy())}')">Guardar</button></div>`);
+}
+function guardarMat(id, fecha){
+  const imp = leerNum(document.getElementById("maI").value), con = document.getElementById("maC").value.trim();
+  if(!(imp > 0)){ avisar("Pon el importe"); return; }
+  D.trabajos.push({id: uid(), cli: id, fecha, mat: true, concepto: con || "Material", horas: 0, importe: Math.round(imp*100)/100});
+  guardar(); cerrar(); pintar(); avisar("Material apuntado: " + eur(imp));
+}
+function pagado(id){
+  const c = cli(id), d = Math.max(0, debe(id));
+  hoja(`<h3>${esc(c.nombre)} te ha pagado</h3><label>Importe (€)</label><input id="fImp" inputmode="decimal" value="${d ? String(Math.round(d*100)/100).replace(".",",") : ""}">
+    <label>Día</label><input type="date" id="fImpF" value="${iso(hoy())}">
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarCobro('${id}')">Guardar</button></div>`);
+}
+function guardarCobro(id){
+  const v = leerNum(document.getElementById("fImp").value); if(!(v > 0)){ avisar("Pon el importe"); return; }
+  D.cobros.push({id: uid(), cli: id, fecha: document.getElementById("fImpF").value || iso(hoy()), importe: Math.round(v*100)/100});
+  guardar(); cerrar(); pintar(); avisar("Cobrado " + eur(v));
+}
+function verMov(tipo, id){
+  const m = (tipo === "c" ? D.cobros : D.trabajos).find(x => x.id === id); if(!m) return;
+  const txt = tipo === "c" ? "Te pagó " + eur(m.importe) : m.mat ? "Material · " + m.concepto + " · " + eur(m.importe) : "Trabajo · " + hTxt(m.horas) + (m.ini ? " (" + m.ini + " a " + m.fin + ")" : "") + " · " + eur(m.importe);
+  hoja(`<h3>${fCorta(m.fecha)}</h3><div style="margin:4px 2px 12px">${esc(txt)}</div>${m.nota ? `<div class="nota">${esc(m.nota)}</div>` : ""}
+    <div class="fila"><button class="btn suave" onclick="cerrar()">Cerrar</button><button class="btn suave" style="color:var(--rojoT)" onclick="borrarMov('${tipo}','${id}')">Borrar</button></div>`);
+}
+function borrarMov(tipo, id){
+  preguntar("¿Borrar este apunte?", "Borrar", () => {
+    if(tipo === "c") D.cobros = D.cobros.filter(x => x.id !== id);
+    else { D.trabajos = D.trabajos.filter(x => x.id !== id); for(const k in D.estado) if(D.estado[k].t === id) delete D.estado[k]; }
+    guardar(); pintar(); avisar("Borrado");
+  });
+}
+
+// ======================= clientes =======================
+function editarCliente(id, nuevo){
+  const c = id ? cli(id) : Object.assign({nombre:"", tel:"", dir:"", precio:"", personas:1, dias:{}, freq:1, notas:""}, nuevo || {});
+  editarCliente.dias = JSON.parse(JSON.stringify(c.dias || {})); editarCliente.freq = c.freq || 1; editarCliente.esta = true; editarCliente.casa = c.casa || null;
   hoja(`<h3>${id ? "Cambiar cliente" : "Nuevo cliente"}</h3>
+    ${!id && c.casa ? `<div class="nota">Cuando empecéis y terminéis un trabajo aquí, se le avisa de la <b>hora</b>, <b>cuántos sois</b> y <b>dónde estáis</b>. Nada más: tus otros clientes y tus cuentas no salen de este móvil.</div>` : ""}
     <label>Nombre</label><input id="fNom" value="${esc(c.nombre)}" placeholder="por ejemplo Pepe Martínez">
     <label>Teléfono</label><input id="fTel" type="tel" value="${esc(c.tel)}">
-    <div class="dos"><div><label>Precio por hora (€)</label><input id="fPre" inputmode="decimal" value="${c.precio===""?"":num(c.precio)}"></div>
-    <div><label>Cuántos soléis ir</label><input id="fPer" inputmode="numeric" value="${c.personas||1}"></div></div>
-    <label>Notas</label><textarea id="fNot">${esc(c.notas)}</textarea>
-    ${c.casa ? `<div class="nota">Casa enlazada: al empezar y terminar aquí se le avisa de la hora, cuántos sois y dónde estáis.</div>` : ""}
-    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarCliente('${id||""}')">Guardar</button></div>
-    ${id ? `<div style="text-align:center;margin-top:12px"><button class="btn peq suave" style="color:var(--rojo)" onclick="borrarCliente('${id}')">Borrar cliente</button></div>` : ""}`);
+    <label>Dirección</label><input id="fDir" value="${esc(c.dir)}" placeholder="calle, número y pueblo">
+    <div class="dos"><div><label>Precio por hora (€)</label><input id="fPre" inputmode="decimal" value="${esc(String(c.precio).replace(".",","))}"></div><div><label>Cuántos soléis ir</label><input id="fPer" inputmode="numeric" value="${c.personas||1}"></div></div>
+    ${id ? `<div class="sub" style="margin:6px 2px 0">Si cambias el precio, vale desde hoy. Lo ya trabajado no cambia.</div>` : ""}
+    <label>Horario: qué días vais y a qué hora</label><div class="horario" id="dSel"></div>
+    <label>Cada cuánto vais</label>
+    <div class="seg tres" id="fFreq" style="margin-top:4px">${[1,2,"mes"].map(f => `<button class="${(c.freq||1)===f?"si":""}" onclick="elegirFreq(this, ${f===1?1:f===2?2:"'mes'"})">${FREQ[f]}</button>`).join("")}</div>
+    <div id="fEsta" ${c.freq===2 && !id ? "" : "hidden"} class="sub" style="margin:2px 2px 0">¿Esta semana toca? <span class="chip elige si" id="eSi" onclick="editarCliente.esta=true;this.classList.add('si');document.getElementById('eNo').classList.remove('si')">Sí</span><span class="chip elige" id="eNo" onclick="editarCliente.esta=false;this.classList.add('si');document.getElementById('eSi').classList.remove('si')">No, la que viene</span></div>
+    <label>Notas</label><textarea id="fNotas" rows="2">${esc(c.notas)}</textarea>
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarCliente('${id||""}')">Guardar</button></div>`);
+  pintaDias();
 }
+function elegirFreq(b, f){
+  editarCliente.freq = f; document.querySelectorAll("#fFreq button").forEach(x => x.classList.toggle("si", x===b));
+  document.getElementById("fEsta").hidden = f !== 2;
+}
+function pintaDias(){
+  const D2 = editarCliente.dias;
+  document.getElementById("dSel").innerHTML = [0,1,2,3,4,5,6].map(i => D2[i]
+    ? `<div class="hd"><span class="dn">${DIAS[i].slice(0,3)}</span><span class="hh"><input type="time" value="${D2[i][0]}" onchange="editarCliente.dias[${i}][0]=this.value">a<input type="time" value="${D2[i][1]}" onchange="editarCliente.dias[${i}][1]=this.value"></span><button class="sw si" aria-label="Quitar ${DIAS[i]}" onclick="delete editarCliente.dias[${i}];pintaDias()"></button></div>`
+    : `<div class="hd off"><span class="dn">${DIAS[i].slice(0,3)}</span><span class="hh">No va</span><button class="sw" aria-label="Poner ${DIAS[i]}" onclick="ponerDia(${i})"></button></div>`).join("");
+}
+function ponerDia(i){ const u = Object.values(editarCliente.dias)[0]; editarCliente.dias[i] = u ? [u[0], u[1]] : ["09:00","11:00"]; pintaDias(); }
 function guardarCliente(id){
-  const nombre = document.getElementById("fNom").value.trim(); if(!nombre){ avisar("Pon el nombre"); return; }
-  const pre = leerNum(document.getElementById("fPre").value);
-  const datos = {nombre, tel: document.getElementById("fTel").value.trim(), precio: isFinite(pre)?pre:0, personas: parseInt(document.getElementById("fPer").value)||1, notas: document.getElementById("fNot").value.trim()};
-  if(id) Object.assign(cli(id), datos); else D.clientes.push(Object.assign({id:uid()}, datos));
-  guardar(); cerrar(); pintar();
+  const v = n => document.getElementById(n).value.trim();
+  const nombre = v("fNom"); if(!nombre){ avisar("Pon el nombre"); return; }
+  for(const k in editarCliente.dias){ const [a,b] = editarCliente.dias[k]; if(!a || !b || mins(b) <= mins(a)){ avisar("Revisa las horas del " + DIAS[k].toLowerCase()); return; } }
+  const pre = leerNum(v("fPre"));
+  const datos = {nombre, tel: v("fTel"), dir: v("fDir"), precio: isFinite(pre) ? pre : 0, personas: parseInt(v("fPer")) || 1, dias: editarCliente.dias, freq: editarCliente.freq, notas: v("fNotas")};
+  const c = id ? cli(id) : null;
+  if(datos.freq === 2 && (!c || c.freq !== 2 || !c.desde)){ const l = lunesDe(hoy()); if(!editarCliente.esta) l.setDate(l.getDate()+7); datos.desde = iso(l); }
+  if(c){ if(c.precio && c.precio !== datos.precio) datos.hist = [...(c.hist||[]), {f: iso(hoy()), de: c.precio, a: datos.precio}]; Object.assign(c, datos); }
+  else D.clientes.push(Object.assign({id: uid(), hist: [], casa: editarCliente.casa || undefined}, datos));
+  guardar(); cerrar(); pintar(); avisar(id ? "Cambiado" : "Añadido " + nombre);
 }
 function borrarCliente(id){
-  const c = cli(id); preguntar("¿Borrar a " + c.nombre + " con todos sus trabajos y cobros?", "Borrar", () => {
-  D.clientes = D.clientes.filter(x => x.id !== id); D.trabajos = D.trabajos.filter(x => x.cli !== id); D.cobros = D.cobros.filter(x => x.cli !== id);
-  if(D.enCurso && D.enCurso.cli === id) D.enCurso = null;
-  guardar(); ir("inicio"); });
+  const c = cli(id);
+  preguntar(`¿Borrar a ${c.nombre}? Se borran también sus trabajos y cobros.`, "Borrar", () => {
+    D.clientes = D.clientes.filter(x => x.id !== id); D.trabajos = D.trabajos.filter(x => x.cli !== id); D.cobros = D.cobros.filter(x => x.cli !== id);
+    D.extras = D.extras.filter(x => x.cli !== id); if(D.enCurso && D.enCurso.cli === id){ D.enCurso = null; avisosTerminar(); }
+    guardar(); historia = []; vista = "clientes"; pintar(); avisar("Borrado");
+  });
 }
-function trabajoMano(cid, tid){
-  const c = cli(cid), t = tid ? D.trabajos.find(x=>x.id===tid) : {fecha:hoyISO(), horas:2, personas:c.personas||1, importe:"", nota:""};
-  elegir.n = t.personas;
-  hoja(`<h3>${tid ? "Cambiar trabajo" : "Apuntar trabajo"} · ${esc(c.nombre)}</h3>
-    <label>Día</label><input id="fF" type="date" value="${t.fecha}">
-    <label>¿Cuántos fuisteis?</label>
-    <div class="cuantos">${[1,2,3,4,5].map(i=>`<button class="${i===t.personas?"si":""}" onclick="elegir(this,${i});calc()">${i}</button>`).join("")}</div>
-    <div class="dos"><div><label>Horas (cada uno)</label><input id="fH" inputmode="decimal" value="${num(t.horas)}" oninput="calc()"></div>
-    <div><label>Precio por hora (€)</label><input id="fP" inputmode="decimal" value="${num(c.precio||0)}" oninput="calc()"></div></div>
-    <label>Importe (€)</label><input id="fI" inputmode="decimal" value="${t.importe===""?"":num(t.importe)}">
-    <label>Nota</label><input id="fN" value="${esc(t.nota)}" placeholder="opcional">
-    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarTrabajo('${cid}','${tid||""}')">Guardar</button></div>
-    ${tid ? `<div style="text-align:center;margin-top:12px"><button class="btn peq suave" style="color:var(--rojo)" onclick="borrarMov('trabajos','${tid}','${cid}')">Borrar</button></div>` : ""}`);
-  if(!tid) calc();
-}
-function guardarTrabajo(cid, tid){
-  const h = leerNum(document.getElementById("fH").value), imp = leerNum(document.getElementById("fI").value), f = document.getElementById("fF").value;
-  if(!f || !isFinite(h) || !isFinite(imp)){ avisar("Pon el día, las horas y el importe"); return; }
-  const datos = {fecha:f, horas:h, personas:elegir.n||1, importe:imp, nota:document.getElementById("fN").value.trim()};
-  if(tid) Object.assign(D.trabajos.find(x=>x.id===tid), datos); else D.trabajos.push(Object.assign({id:uid(), cli:cid}, datos));
-  guardar(); cerrar(); pintar();
-}
-function cobro(cid, kid){
-  const c = cli(cid), k = kid ? D.cobros.find(x=>x.id===kid) : {fecha:hoyISO(), importe: Math.max(0, saldo(cid)), nota:""};
-  hoja(`<h3>${kid ? "Cambiar cobro" : "Me ha pagado"} · ${esc(c.nombre)}</h3>
-    <label>Día</label><input id="fF" type="date" value="${k.fecha}">
-    <label>Cantidad (€)</label><input id="fI" inputmode="decimal" value="${k.importe ? num(k.importe) : ""}">
-    <label>Nota</label><input id="fN" value="${esc(k.nota)}" placeholder="opcional (Bizum, efectivo…)">
-    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarCobro('${cid}','${kid||""}')">Guardar</button></div>
-    ${kid ? `<div style="text-align:center;margin-top:12px"><button class="btn peq suave" style="color:var(--rojo)" onclick="borrarMov('cobros','${kid}','${cid}')">Borrar</button></div>` : ""}`);
-}
-function guardarCobro(cid, kid){
-  const imp = leerNum(document.getElementById("fI").value), f = document.getElementById("fF").value;
-  if(!f || !isFinite(imp) || imp <= 0){ avisar("Pon el día y la cantidad"); return; }
-  const datos = {fecha:f, importe:imp, nota:document.getElementById("fN").value.trim()};
-  if(kid) Object.assign(D.cobros.find(x=>x.id===kid), datos); else D.cobros.push(Object.assign({id:uid(), cli:cid}, datos));
-  guardar(); cerrar(); pintar();
-}
-function borrarMov(lista, id, cid){ preguntar("¿Borrarlo?", "Borrar", () => { D[lista] = D[lista].filter(x => x.id !== id); guardar(); pintar(); }); }
 
 // ======================= copia de seguridad =======================
-function nombreCopia(){ return "Mis trabajos - copia " + hoyISO() + ".json"; }
+function nombreCopia(){ return "Mis trabajos - copia " + iso(hoy()) + ".json"; }
 async function guardarCopia(){
   const txt = JSON.stringify(Object.assign({app:"Mis trabajos", copia: new Date().toISOString()}, D), null, 1);
   const f = new File([txt], nombreCopia(), {type:"application/json"});
-  try{ if(navigator.canShare && navigator.canShare({files:[f]})){ await navigator.share({files:[f], title:"Copia de Mis trabajos"}); D.ultimaCopia = Date.now(); guardar(); pintar(); return; } }catch(e){ if(e && e.name==="AbortError") return; }
+  try{ if(navigator.canShare && navigator.canShare({files:[f]})){ await navigator.share({files:[f], title:"Copia de Mis trabajos"}); D.ultimaCopia = Date.now(); guardar(); pintar(); return; } }catch(e){ if(e && e.name === "AbortError") return; }
   const a = document.createElement("a"); a.href = URL.createObjectURL(f); a.download = nombreCopia(); document.body.appendChild(a); a.click(); a.remove();
   D.ultimaCopia = Date.now(); guardar(); pintar(); avisar("Copia guardada en Descargas");
 }
@@ -273,86 +541,176 @@ function recuperarCopia(input){
     try{
       const d = JSON.parse(r.result); if(!d.clientes || !d.trabajos) throw 0;
       preguntar("¿Cambiar todo lo de ahora por la copia del " + (d.copia ? new Date(d.copia).toLocaleDateString("es-ES") : "archivo") + "?", "Recuperar", () => {
-        D = {v:1, clientes:d.clientes, trabajos:d.trabajos, cobros:d.cobros||[], enCurso:d.enCurso||null, ultimaCopia:Date.now()};
-        guardar(); ir("inicio"); avisar("Copia recuperada"); });
+        const disp = D.disp; delete d.app; delete d.copia;
+        try{ localStorage.setItem(CLAVE, JSON.stringify(d)); }catch(e){}
+        D = cargar(); D.disp = disp; D.ultimaCopia = Date.now(); guardar(); historia = []; vista = "hoy"; pintar(); avisar("Copia recuperada"); });
     }catch(e){ avisar("Ese archivo no es una copia de Mis trabajos"); }
   };
   r.readAsText(f);
 }
+function borrarTodo(){
+  preguntar("¿Borrar todo? La app se queda vacía, como recién instalada. Si no tienes copia, no se puede recuperar.", "Borrar todo", () => {
+    const disp = D.disp, avisos = D.avisos; if(D.enCurso) avisosTerminar();
+    D = {v:2, clientes:[], trabajos:[], cobros:[], estado:{}, extras:[], enCurso:null, disp, avisos, creado: Date.now()};
+    try{ localStorage.removeItem(COLA); }catch(e){}
+    guardar(); historia = []; vista = "hoy"; sel = hoy(); pintar(); avisar("Borrado todo");
+  });
+}
+async function cambiarAvisos(b){
+  D.avisos = !D.avisos; guardar();
+  if(D.avisos && puedeAvisar() && Notification.permission === "default"){ try{ await Notification.requestPermission(); }catch(e){} }
+  if(!D.avisos) avisosTerminar(); else if(D.enCurso) avisosEmpezar();
+  pintar();
+}
 
 // ======================= pantallas =======================
-let vista = "inicio", actual = null;
-function ir(v, id){ vista = v; actual = id || null; window.scrollTo(0,0); pintar(); }
+let vista = "hoy", actual = null, historia = [], sel = hoy(), modoPagos = "cli";
+const LUPA = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>`;
+const AVISO_ICONO = `<svg viewBox="0 0 24 24" width="26" height="26" style="display:block"><path d="M12 2.6 1.6 20.6c-.4.7.1 1.4.9 1.4h19c.8 0 1.3-.7.9-1.4L12 2.6Z" fill="#f5b800" stroke="#1d2420" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 9v6" stroke="#1d2420" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="18.3" r="1.4" fill="#1d2420"/></svg>`;
+function ir(v, id){ historia.push([vista, actual]); vista = v; actual = id || null; window.scrollTo(0,0); pintar(); }
+function atras(){ const [v,a] = historia.pop() || ["hoy", null]; vista = v; actual = a; pintar(); }
+function pestana(v){ historia = []; vista = v; actual = null; if(v === "hoy") sel = hoy(); window.scrollTo(0,0); pintar(); }
 function hoja(html){ document.getElementById("hoja").innerHTML = html; document.getElementById("capa").classList.add("ver"); }
-// pregunta dentro de la página (los avisos del navegador no salen en todos los móviles)
-function preguntar(txt, si, accion){
-  hoja(`<h3>${esc(txt)}</h3><div class="fila" style="margin-top:16px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn rojo" id="bSi">${esc(si)}</button></div>`);
-  document.getElementById("bSi").onclick = () => { cerrar(); accion(); };
-}
 function cerrar(){ document.getElementById("capa").classList.remove("ver"); }
+function preguntar(txt, si, accion){
+  preguntar.f = accion;
+  hoja(`<h3>${esc(txt)}</h3><div class="fila" style="margin-top:16px"><button class="btn suave" onclick="cerrar()">No</button><button class="btn rojo" onclick="cerrar();preguntar.f()">${esc(si)}</button></div>`);
+}
+function buscador(){ return `<div class="buscar">${LUPA}<input type="search" placeholder="Buscar cliente" oninput="filtrar(this.value)" autocomplete="off"></div>`; }
+function filtrar(q){
+  q = sinAcentos(q.trim()); let n = 0;
+  document.querySelectorAll("[data-n]").forEach(e => { const si = !q || e.dataset.n.includes(q); e.hidden = !si; if(si) n++; });
+  document.querySelectorAll(".sinres").forEach(v => v.style.display = n ? "none" : "block");
+}
 function pintar(){
-  const V = document.getElementById("vista"), T = document.getElementById("titulo");
-  document.getElementById("bAtras").hidden = vista === "inicio";
-  document.getElementById("bAjustes").hidden = vista !== "inicio";
-  if(vista === "cliente" && cli(actual)) return pintarCliente(V, T);
-  if(vista === "ajustes") return pintarAjustes(V, T);
-  vista = "inicio"; T.textContent = "Mis trabajos";
-  let h = "";
-  if(D.enCurso){
-    const c = cli(D.enCurso.cli);
-    h += `<div class="tarjeta encurso"><div style="color:var(--gris);font-size:15px">Trabajando en</div><div class="grande">${esc(c ? c.nombre : "?")}</div>
-      <div style="margin:4px 0 12px">Desde las ${horaTxt(D.enCurso.ini)} · ${D.enCurso.personas} ${D.enCurso.personas===1?"persona":"personas"} · <span id="reloj"></span></div>
-      <button class="btn rojo ancho" onclick="terminar()">■ Terminar</button></div>`;
+  if(vista === "cliente" || vista === "cuenta"){ if(!cli(actual)){ vista = vista === "cliente" ? "clientes" : "pagos"; actual = null; } }
+  document.getElementById("bAtras").hidden = !(vista === "cliente" || vista === "cuenta");
+  const tab = vista === "cliente" ? "clientes" : vista === "cuenta" ? "pagos" : vista;
+  document.querySelectorAll(".barra button").forEach(b => b.classList.toggle("si", b.dataset.v === tab));
+  document.getElementById("titulo").textContent = vista === "hoy" ? "Mis trabajos" : vista === "pagos" ? "Pagos" : vista === "clientes" ? "Clientes" : vista === "ajustes" ? "Ajustes" : cli(actual).nombre;
+  const V = document.getElementById("vista");
+  V.innerHTML = vista === "hoy" ? vHoy() : vista === "pagos" ? vPagos() : vista === "clientes" ? vClientes() : vista === "ajustes" ? vAjustes() : vista === "cuenta" ? vCuenta(cli(actual)) : vCliente(cli(actual));
+  reloj();
+}
+
+function vHoy(){
+  const H = hoy(), mismo = iso(sel) === iso(H), dif = Math.round((sel - H)/864e5);
+  const lunes = lunesDe(sel);
+  let sem = "";
+  for(let i=0;i<7;i++){ const d = new Date(lunes); d.setDate(lunes.getDate()+i);
+    sem += `<button class="${iso(d)===iso(sel)?"sel":""} ${iso(d)===iso(H)?"hoy":""}" onclick="sel=deIso('${iso(d)}');pintar()"><span class="l">${CORTO[i]}</span><span class="n">${d.getDate()}</span><span class="p">${"<i></i>".repeat(Math.min(delDia(d).filter(cuenta).length,3))}</span></button>`; }
+  const l = delDia(sel); let h = "", horas = 0, hechos = 0, cuentan = 0;
+  for(const {c, h:[a,b], k, extra} of l){
+    const e = D.estado[k], st = D.enCurso && D.enCurso.k === k ? "curso" : e && e.st, dur = (mins(b)-mins(a))/60, tot = dur * (c.personas||1);
+    if(st !== "no" && st !== "movido"){ horas += tot; cuentan++; } if(st === "hecho") hechos++;
+    const t = st === "hecho" ? D.trabajos.find(x => x.id === e.t) : null;
+    const mas = `<button class="btn mas" onclick="cambiarDia('${k}')" aria-label="No se va o pasar a otro día">${AVISO_ICONO}</button>`;
+    let acc, sub;
+    if(st === "hecho"){ acc = t ? `<span class="ok">✓ Hecho de ${t.ini} a ${t.fin} · ${personasTxt(t.personas)}</span><button class="btn mini" style="margin-left:auto" onclick="material('${c.id}','${iso(sel)}')">＋ Material</button>` : `<span class="ok">✓ Hecho</span>`; sub = "Contratado " + hTxt(dur) + " × " + (c.personas||1) + " = " + hTxt(tot); }
+    else if(st === "curso"){ acc = `<span class="crono num">0:00</span><button class="btn rojo" style="margin-left:auto" onclick="terminar()">■ Terminar</button>`; sub = "Empezado a las " + hhmm(new Date(D.enCurso.ini)) + " · " + personasTxt(D.enCurso.personas); }
+    else if(st === "no"){ acc = `<span class="sub">✕ No se va${e.motivo ? " · " + esc(e.motivo) : ""}</span><button class="btn mini" style="margin-left:auto" onclick="deshacer('${k}')">Deshacer</button>`; sub = personasTxt(c.personas||1) + " · " + hTxt(dur); }
+    else if(st === "movido"){ acc = `<span class="sub">↷ Pasado al ${fTxt(deIso(e.a))}</span><button class="btn mini" style="margin-left:auto" onclick="deshacer('${k}')">Deshacer</button>`; sub = personasTxt(c.personas||1) + " · " + hTxt(dur); }
+    else { acc = (dif <= 0 ? `<button class="btn ${D.enCurso ? "suave" : "prin"}" ${D.enCurso ? 'style="opacity:.55"' : ""} onclick="empezar('${k}')">▶ Empezar</button>` : `<span class="sub">Previsto</span>`) + mas; sub = personasTxt(c.personas||1) + " · " + hTxt(dur) + " → " + hTxt(tot); }
+    h += `<div class="tr ${st||""}"><div class="hora num"><div class="a">${a}</div><div class="b">${b}</div></div>
+      <div class="cuerpo"><div class="nom">${esc(c.nombre)}${extra ? ' <span class="chip" style="font-size:12px">cambiado de día</span>' : ""}</div><div class="sub">${sub}</div><div class="acc">${acc}</div></div></div>`;
   }
-  const total = D.clientes.reduce((t,c)=>t+Math.max(0,saldo(c.id)),0);
-  h += `<h2>Clientes${total>0 ? ` · te deben ${eur(total)}` : ""}</h2>`;
-  if(!D.clientes.length) h += `<div class="tarjeta vacio">Aún no tienes clientes.<br>Pulsa «＋ Nuevo cliente» para empezar.</div>`;
-  D.clientes.slice().sort((a,b)=>a.nombre.localeCompare(b.nombre,"es")).forEach(c => {
-    const s = saldo(c.id);
-    h += `<div class="tarjeta cli"><div class="info" onclick="ir('cliente','${c.id}')"><div class="nom">${esc(c.nombre)}${c.casa?'<span class="marca">enlazado</span>':""}</div>
-      <div class="sub">${s>0.004 ? `<span class="debe">Te debe ${eur(s)}</span>` : s<-0.004 ? `<span class="aldia">A su favor ${eur(-s)}</span>` : `<span class="aldia">Al día</span>`} · ${eur(c.precio||0)}/h</div></div>
-      ${D.enCurso ? "" : `<button class="btn prin" onclick="empezar('${c.id}')">▶ Empezar</button>`}</div>`;
-  });
-  h += `<button class="btn ancho" style="margin-top:6px" onclick="editarCliente()">＋ Nuevo cliente</button>`;
-  const dias = D.ultimaCopia ? Math.floor((Date.now()-D.ultimaCopia)/86400000) : null;
-  if(D.trabajos.length && (dias===null || dias>=14)) h += `<div class="nota" style="margin-top:16px" onclick="ir('ajustes')">${dias===null ? "Aún no has guardado ninguna copia" : "Tu última copia es de hace " + dias + " días"}. Toca aquí para guardar una (por si cambias de móvil).</div>`;
-  V.innerHTML = h; reloj();
+  // trabajos apuntados a mano ese día
+  const sueltos = D.trabajos.filter(t => t.fecha === iso(sel) && !t.k && !t.mat && cli(t.cli));
+  for(const t of sueltos) h += `<div class="tr hecho"><div class="hora num"><div class="a">${t.ini || "—"}</div><div class="b">${t.fin || ""}</div></div>
+      <div class="cuerpo"><div class="nom">${esc(cli(t.cli).nombre)} <span class="chip" style="font-size:12px">fuera de lo previsto</span></div><div class="sub">${hTxt(t.horas)}${t.nota ? " · " + esc(t.nota) : ""}</div></div></div>`;
+  const ol = olvidado(), oc = ol && cli(ol.cli);
+  const copiaVieja = D.clientes.length && Date.now() - (D.ultimaCopia || D.creado) > 14*864e5;
+  return (ol ? `<div class="olvido"><b>⚠ ¿Se te olvidó terminar en ${esc(oc ? oc.nombre : "")}?</b><div class="sub">Lo empezaste ${ol.fecha === iso(H) ? "hoy" : "el " + fTxt(deIso(ol.fecha))} a las ${hhmm(new Date(ol.ini))} y tenía que acabar a las ${ol.pr[1]}.</div>
+      <button class="btn rojo ancho" style="margin-top:10px" onclick="terminarPrevisto()">■ Terminarlo a las ${ol.pr[1]}</button></div>` : "")
+    + `<div class="dia"><button onclick="sel.setDate(sel.getDate()-1);sel=new Date(sel);pintar()" aria-label="Día anterior">‹</button>
+      <div class="t"><div class="q">${mismo ? "Hoy" : dif===1 ? "Mañana" : dif===-1 ? "Ayer" : DIAS[dow(sel)]}</div><div class="f">${fTxt(sel)}</div></div>
+      <button onclick="sel.setDate(sel.getDate()+1);sel=new Date(sel);pintar()" aria-label="Día siguiente">›</button></div>
+    <div class="semana">${sem}</div>
+    <div class="resumen">${cuentan ? `<span><b>${cuentan}</b> ${cuentan>1?"trabajos":"trabajo"} · <b>${hTxt(horas)}</b></span><span>${hechos}/${cuentan} hechos</span>` : ""}</div>
+    ${h || `<div class="vacio">${D.clientes.length ? "Este día no tienes trabajos previstos." : "Aún no tienes clientes. Ve a <b>Clientes</b> y pulsa «＋ Nuevo cliente»."}</div>`}
+    <button class="btn ancho" style="margin-top:4px;background:var(--nota);color:var(--notaT);border:2px dashed var(--notaL)" onclick="trabajoMano()">＋ Trabajo fuera de lo previsto</button>
+    ${copiaVieja && mismo ? `<div class="nota copia" style="margin-top:14px"><span style="flex:1">Hace tiempo que no guardas una copia de tus datos.</span><button class="btn mini" onclick="guardarCopia()">Guardar copia</button></div>` : ""}`;
 }
-function reloj(){ const r = document.getElementById("reloj"); if(!r || !D.enCurso) return; const m = Math.floor((Date.now()-D.enCurso.ini)/60000); r.textContent = Math.floor(m/60) + " h " + String(m%60).padStart(2,"0") + " min"; }
-setInterval(reloj, 20000);
-function pintarCliente(V, T){
-  const c = cli(actual), s = saldo(c.id); T.textContent = c.nombre;
-  const movs = D.trabajos.filter(x=>x.cli===c.id).map(x=>Object.assign({k:"t"},x)).concat(D.cobros.filter(x=>x.cli===c.id).map(x=>Object.assign({k:"c"},x)))
-    .sort((a,b)=> b.fecha.localeCompare(a.fecha) || (b.ini||0)-(a.ini||0));
-  let h = `<div class="tarjeta"><div style="color:var(--gris);font-size:15px">${s>0.004 ? "Te debe" : s<-0.004 ? "A su favor" : "Al día"}</div>
-    <div class="saldo ${s>0.004?"debe":"aldia"}">${eur(Math.abs(s))}</div>
-    <div style="color:var(--gris);margin-top:4px">${eur(c.precio||0)}/h · ${c.personas||1} ${(c.personas||1)===1?"persona":"personas"}${c.tel ? ` · <a href="tel:${esc(c.tel)}">${esc(c.tel)}</a>` : ""}</div>
-    ${c.notas ? `<div style="margin-top:8px">${esc(c.notas)}</div>` : ""}
-    ${c.casa ? `<div class="nota">Casa enlazada: al empezar y terminar aquí se le avisa de la hora, cuántos sois y dónde estáis.</div>` : ""}</div>
-    ${D.enCurso ? "" : `<button class="btn prin ancho" onclick="empezar('${c.id}')">▶ Empezar a trabajar</button>`}
-    <div class="fila" style="margin-top:10px"><button class="btn" onclick="trabajoMano('${c.id}')">＋ Trabajo</button><button class="btn" onclick="cobro('${c.id}')">€ Me ha pagado</button><button class="btn suave" onclick="editarCliente('${c.id}')">Cambiar</button></div>
-    <h2>Trabajos y cobros</h2><div class="tarjeta">`;
-  if(!movs.length) h += `<div class="vacio">Nada apuntado todavía.</div>`;
-  movs.forEach(m => {
-    if(m.k==="t") h += `<div class="mov" onclick="trabajoMano('${c.id}','${m.id}')"><div><div>${fechaTxt(m.fecha)}${m.ini ? " · " + horaTxt(m.ini) + "–" + horaTxt(m.fin) : ""}</div>
-      <div class="d">${num(m.horas)} h × ${m.personas} ${m.personas===1?"persona":"personas"}${m.nota ? " · " + esc(m.nota) : ""}</div></div><div class="imp">${eur(m.importe)}</div></div>`;
-    else h += `<div class="mov" onclick="cobro('${c.id}','${m.id}')"><div><div>${fechaTxt(m.fecha)}</div><div class="d">Pagado${m.nota ? " · " + esc(m.nota) : ""}</div></div><div class="imp cobro">− ${eur(m.importe)}</div></div>`;
-  });
-  V.innerHTML = h + `</div>`;
+
+function vPagos(){
+  const l = [...D.clientes].sort((a,b) => debe(b.id) - debe(a.id) || a.nombre.localeCompare(b.nombre,"es"));
+  const total = D.clientes.reduce((s,c) => s + Math.max(0, debe(c.id)), 0), quien = D.clientes.filter(c => debe(c.id) > 0.001).length;
+  return `<div class="tarjeta"><div class="sub">Te deben en total</div><div class="saldo num ${total>0.001?"debe":"aldia"}">${eur(total)}</div><div class="sub">${quien ? quien + (quien===1?" cliente":" clientes") : "Todos al día"}</div></div>
+    <div class="seg"><button class="${modoPagos==="cli"?"si":""}" onclick="modoPagos='cli';pintar()">Por cliente</button><button class="${modoPagos==="mes"?"si":""}" onclick="modoPagos='mes';pintar()">Por meses</button></div>`
+    + (modoPagos === "mes" ? `<div class="tarjeta">${porMes()}</div>` : (D.clientes.length > 5 ? buscador() : "") + (l.map(c => { const d = debe(c.id);
+      const m = mesesDe(c.id).filter(x => x.imp - x.pag > 0.01).map(x => mesNombre(x.m).toLowerCase()).reverse();
+      return `<div class="tarjeta cli" data-n="${esc(sinAcentos(c.nombre))}" onclick="ir('cuenta','${c.id}')"><div class="info"><div class="nom">${esc(c.nombre)}</div><div class="sub">${m.length ? "debe " + m.join(" y ") : ""}</div></div>
+        <div class="der">${d > 0.001 ? `<div class="debe num">${eur(d)}</div><div class="sub">te debe</div>` : d < -0.001 ? `<div class="aldia num">${eur(-d)}</div><div class="sub">a su favor</div>` : `<div class="aldia">al día</div>`}</div><span class="flecha">›</span></div>`; }).join("") || `<div class="vacio">Aún no tienes clientes.</div>`) + `<div class="vacio sinres">Ningún cliente se llama así.</div>`);
 }
-function pintarAjustes(V, T){
-  T.textContent = "Ajustes";
-  const cola = leerCola().length;
-  V.innerHTML = `<h2>Copia de seguridad</h2><div class="tarjeta">
-    <div>Tus clientes y cuentas están <b>solo en este móvil</b>. Guarda una copia de vez en cuando y mándatela por WhatsApp o correo: si cambias de móvil, la recuperas aquí.</div>
-    <div style="color:var(--gris);font-size:14px;margin:8px 0 12px">${D.ultimaCopia ? "Última copia: " + new Date(D.ultimaCopia).toLocaleDateString("es-ES") : "Aún no has guardado ninguna copia."}</div>
-    <button class="btn prin ancho" onclick="guardarCopia()">Guardar copia</button>
-    <label class="btn suave ancho" style="margin-top:10px;color:var(--tinta)">Recuperar una copia<input type="file" accept=".json,application/json" style="display:none" onchange="recuperarCopia(this)"></label></div>
-    <h2>Privacidad</h2><div class="tarjeta" style="font-size:15px">Nadie más ve tus clientes ni tus cuentas: no se mandan a ningún sitio. Solo con los clientes <b>enlazados</b> se les avisa al empezar y terminar (hora, cuántos sois y dónde estáis).${cola ? `<div class="nota">Hay ${cola} aviso(s) esperando a tener internet.</div>` : ""}</div>
-    <div class="pie">Mis trabajos · v1</div>`;
+function porMes(){
+  const t = {};
+  for(const c of D.clientes) for(const x of mesesDe(c.id)){ (t[x.m] = t[x.m] || {m:x.m, imp:0, pag:0, deben:[]}); t[x.m].imp += x.imp; t[x.m].pag += x.pag; if(x.imp - x.pag > 0.01) t[x.m].deben.push(c.nombre); }
+  return Object.values(t).sort((a,b) => a.m < b.m ? 1 : -1).map(x => `<div class="mov" style="cursor:pointer" onclick="verMes('${x.m}')"><div><div><b>${mesNombre(x.m)}</b></div><div class="d">${!x.deben.length ? "Todos han pagado" : x.deben.length <= 2 ? "Debe" + (x.deben.length>1?"n":"") + ": " + esc(x.deben.join(" y ")) : "Deben " + x.deben.length + " clientes"}</div></div>
+    <div style="text-align:right;white-space:nowrap">${x.imp - x.pag < 0.01 ? `<span class="aldia">✓ Cobrado</span><div class="sub num">${eur(x.imp)}</div>` : `<span class="debe num">${eur(x.imp-x.pag)}</span><div class="sub num">de ${eur(x.imp)}</div>`}</div></div>`).join("") || `<div class="sub">Aún nada.</div>`;
+}
+function verMes(m){
+  const l = D.clientes.map(c => ({c, x: mesesDe(c.id).find(x => x.m === m)})).filter(o => o.x).sort((a,b) => (b.x.imp-b.x.pag) - (a.x.imp-a.x.pag));
+  hoja(`<h3>${mesNombre(m)}</h3><div class="sub" style="margin-bottom:6px">Toca un cliente para ir a su cuenta.</div>` + l.map(({c,x}) => `<div class="mov" style="cursor:pointer" onclick="cerrar();ir('cuenta','${c.id}')"><div><div><b>${esc(c.nombre)}</b></div><div class="d">${x.n} ${x.n===1?"trabajo":"trabajos"} · ${eur(x.imp)}</div></div><div style="text-align:right;white-space:nowrap">${estadoMes(x)}</div></div>`).join("")
+    + `<button class="btn suave ancho" style="margin-top:12px" onclick="cerrar()">Cerrar</button>`);
+}
+function vCuenta(c){
+  const d = debe(c.id);
+  const movs = [...D.trabajos.filter(t => t.cli===c.id).map(t => ({...t, tipo:"t"})), ...D.cobros.filter(t => t.cli===c.id).map(t => ({...t, tipo:"c"}))]
+    .sort((a,b) => a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0);
+  return `<div class="tarjeta"><div class="sub">${d > 0.001 ? "Te debe" : d < -0.001 ? "Tiene a su favor" : "Está al día"}</div><div class="saldo num ${d>0.001?"debe":"aldia"}">${eur(Math.abs(d))}</div>
+      <div class="sub">${String(c.precio).replace(".",",")} €/h</div>
+      <div class="fila" style="margin-top:12px"><button class="btn prin" onclick="pagado('${c.id}')">€ Me ha pagado</button><button class="btn" onclick="trabajoMano('${c.id}')">＋ Trabajo</button></div>
+      <button class="btn suave ancho" style="margin-top:10px" onclick="material('${c.id}')">＋ Material (plantas, abono…)</button></div>
+    <h2>Por meses</h2><div class="tarjeta">${mesesDe(c.id).map(x => `<div class="mov"><div><div><b>${mesNombre(x.m)}</b></div><div class="d">${x.n} ${x.n===1?"trabajo":"trabajos"} · ${eur(x.imp)}</div></div><div style="text-align:right;white-space:nowrap">${estadoMes(x)}</div></div>`).join("") || `<div class="sub">Aún nada.</div>`}</div>
+    <h2>Últimos movimientos</h2><div class="tarjeta">${movs.slice(0,30).map(m => `<div class="mov" style="cursor:pointer" onclick="verMov('${m.tipo}','${m.id}')"><div><div>${m.tipo==="t" ? (m.mat ? "Material · " + esc(m.concepto) : "Trabajo · " + hTxt(m.horas) + (m.ini ? ` (${m.ini} a ${m.fin})` : "")) : "Te pagó"}</div><div class="d">${fCorta(m.fecha)}</div></div><div class="imp num ${m.tipo==="c"?"cobro":""}">${m.tipo==="c" ? "− " : ""}${eur(m.importe)}</div></div>`).join("") || `<div class="sub">Aún nada.</div>`}</div>
+    <div class="sub" style="text-align:center">Toca un movimiento para verlo o borrarlo.</div>`;
+}
+function vClientes(){
+  const l = [...D.clientes].sort((a,b) => a.nombre.localeCompare(b.nombre,"es"));
+  return `<button class="btn prin ancho" style="margin-bottom:12px" onclick="editarCliente()">＋ Nuevo cliente</button>` + (D.clientes.length ? buscador() : "") + (l.map(c =>
+    `<div class="tarjeta cli" data-n="${esc(sinAcentos(c.nombre + " " + (c.tel||"").replace(/ /g,"") + " " + (c.dir||"")))}" onclick="ir('cliente','${c.id}')"><div class="info"><div class="nom">${esc(c.nombre)}</div>
+      <div>${fijosTxt(c).map(t => `<span class="chip">${t}</span>`).join("") || `<span class="sub">Sin días fijos</span>`}</div></div><span class="flecha">›</span></div>`).join("") || `<div class="vacio">Aún no tienes clientes. Pulsa «＋ Nuevo cliente».</div>`) + `<div class="vacio sinres">Ningún cliente se llama así.</div>`;
+}
+function hechosPorMes(c){
+  const l = D.trabajos.filter(t => t.cli===c.id && !t.mat).sort((a,b) => a.fecha < b.fecha ? 1 : -1);
+  if(!l.length) return `<div class="tarjeta"><div class="sub">Aún ninguno.</div></div>`;
+  const meses = [...new Set(l.map(t => t.fecha.slice(0,7)))];
+  return meses.map((m,i) => { const ts = l.filter(t => t.fecha.slice(0,7) === m), h = ts.reduce((s,t) => s + t.horas, 0);
+    return `<details class="tarjeta mesd"${i===0?" open":""}><summary><b>${mesNombre(m)}</b><span class="sub">${ts.length} ${ts.length===1?"trabajo":"trabajos"} · <b style="color:var(--tinta)">${hTxt(h)}</b></span></summary>
+      ${ts.map(t => `<div class="mov"><div><div>${fCorta(t.fecha)}${t.ini ? ` · ${t.ini} a ${t.fin}` : ""}</div><div class="d">${t.personas ? personasTxt(t.personas) : ""}${t.real != null && Math.abs(t.real - t.horas) > 0.01 ? ` · estuvisteis ${hTxt(t.real)}` : ""}${t.nota ? " · " + esc(t.nota) : ""}</div></div><div class="imp num">${hTxt(t.horas)}</div></div>`).join("")}</details>`; }).join("");
+}
+function vCliente(c){
+  const tel = (c.tel||"").replace(/[^\d+]/g,""), wa = tel.replace(/^\+/,"").length === 9 ? "34" + tel : tel.replace(/^\+/,"");
+  return `<div class="tarjeta">
+      <div class="fijo" style="align-items:flex-start"><span class="dd">Teléfono</span><span style="flex:1;min-width:0">${c.tel ? esc(c.tel) + `<div class="fila" style="margin-top:8px"><a class="btn mini" href="tel:${esc(tel)}">📞 Llamar</a><a class="btn mini" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a></div>` : '<span class="sub">—</span>'}</span></div>
+      <div class="fijo" style="align-items:flex-start"><span class="dd">Dirección</span><span style="flex:1;min-width:0">${c.dir ? esc(c.dir) + `<br><a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.dir)}" target="_blank" rel="noopener" style="color:var(--verdeT);font-weight:600;text-decoration:none">📍 Cómo llegar</a>` : '<span class="sub">—</span>'}</span></div>
+      <div class="fijo" style="align-items:flex-start"><span class="dd">Precio</span><span class="num">${String(c.precio).replace(".",",")} € la hora${(c.hist||[]).length ? `<div class="sub">${c.hist.slice().reverse().map(x => `antes ${String(x.de).replace(".",",")} €, cambió el ${fCorta(x.f)}`).join("<br>")}</div>` : ""}</span></div>
+      <div class="fijo"><span class="dd">Soléis ir</span><span>${personasTxt(c.personas||1)}</span></div>
+      ${c.notas ? `<div class="nota">${esc(c.notas)}</div>` : ""}</div>
+    <h2>Días fijos${Object.keys(c.dias||{}).length ? " · " + FREQ[c.freq||1].toLowerCase() : ""}</h2><div class="tarjeta">${Object.keys(c.dias||{}).sort().map(k => `<div class="fijo"><span class="dd">${c.freq==="mes" ? "1er " + DIAS[k].toLowerCase() : DIAS[k]}</span><span class="num">${c.dias[k][0]} – ${c.dias[k][1]}</span></div>`).join("") || `<div class="sub">Sin días fijos: solo trabajos sueltos.</div>`}</div>
+    <h2>Trabajos hechos</h2>${hechosPorMes(c)}
+    <button class="btn prin ancho" onclick="editarCliente('${c.id}')">✎ Editar cliente (nombre, datos y días)</button>
+    <div style="text-align:center;margin-top:12px"><button class="btn suave" style="color:var(--rojoT)" onclick="borrarCliente('${c.id}')">Borrar cliente</button></div>`;
+}
+function vAjustes(){
+  const dias = D.ultimaCopia ? Math.floor((Date.now() - D.ultimaCopia)/864e5) : null, cola = leerCola().length;
+  const bloq = puedeAvisar() && Notification.permission === "denied";
+  return `<div class="tarjeta" style="padding:4px 12px">
+      <div class="opc" onclick="guardarCopia()"><span class="ic">⤓</span><span class="tx"><b>Guardar copia</b><span>${dias == null ? "Aún no has guardado ninguna" : dias === 0 ? "Última: hoy" : dias === 1 ? "Última: ayer" : "Última: hace " + dias + " días"}</span></span><span class="flecha">›</span></div>
+      <label class="opc" style="margin:0;color:inherit;font-size:inherit"><span class="ic">⤒</span><span class="tx"><b>Recuperar una copia</b><span>Si cambias de móvil o se borra algo</span></span><span class="flecha">›</span><input type="file" accept=".json,application/json" style="display:none" onchange="recuperarCopia(this)"></label>
+    </div>
+    <div class="tarjeta" style="padding:4px 12px">
+      <div class="opc" onclick="cambiarAvisos()"><span class="ic">🔔</span><span class="tx"><b>Avisarme si me olvido de terminar</b><span>Te llega una notificación 1 hora después de la hora de fin, y otra cada hora hasta que pulses ■</span></span><button class="sw ${D.avisos?"si":""}" aria-label="Avisos"></button></div>
+    </div>
+    ${!puedeAvisar() ? `<div class="nota">Este navegador no puede mandar notificaciones. Abre la app desde Chrome y añádela a la pantalla de inicio.</div>` : bloq ? `<div class="nota">Las notificaciones están bloqueadas para esta app. Actívalas en los ajustes del móvil (Notificaciones de Chrome).</div>` : ""}
+    <div class="nota">Tus clientes y cuentas se guardan solo en este móvil. Haz una copia de vez en cuando.${cola ? ` Hay ${cola} aviso(s) esperando a tener internet.` : ""}</div>
+    <div class="tarjeta" style="padding:4px 12px">
+      <div class="opc peligro" onclick="borrarTodo()"><span class="ic">✕</span><span class="tx"><b>Borrar todo y empezar de cero</b><span>Clientes, trabajos y cobros</span></span><span class="flecha">›</span></div>
+    </div>
+    <div class="sub" style="text-align:center;margin-top:16px">Mis trabajos · v2</div>`;
 }
 pintar();
-if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 </body>
 </html>
