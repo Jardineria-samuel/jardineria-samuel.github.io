@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2f6b3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mis trabajos">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icono-192.png">
+<link rel="icon" href="icono-192.png">
+<title>Mis trabajos</title>
+<style>
+:root{--verde:#2f6b3a;--verde2:#e6f0e7;--verdeT:#2f6b3a;--tinta:#1d2420;--gris:#6b746e;--linea:#dfe5e0;--fondo:#f4f6f3;--tarjeta:#ffffff;--suave:#eef1ee;--campo:#cdd5cf;
+  --rojo:#b3362b;--rojoT:#b3362b;--naranja:#c4721f;--curso:#fff7ec;--cursoL:#f0c48c;--nota:#eef4ff;--notaL:#cfe0ff;--notaT:#24467a;--aviso:#1d2420;--avisoT:#ffffff;--blanco:#ffffff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--verde:#3f8a4c;--verde2:#1f3324;--verdeT:#8fd19a;--tinta:#e7ece8;--gris:#9aa59d;--linea:#2c342e;--fondo:#121613;--tarjeta:#1b211d;--suave:#252c27;--campo:#3a443d;
+  --rojo:#c4473b;--rojoT:#f08b80;--naranja:#f0a65a;--curso:#2c2116;--cursoL:#6b4a24;--nota:#17243a;--notaL:#2a4268;--notaT:#b8d0f5;--aviso:#e7ece8;--avisoT:#121613;color-scheme:dark}}
+:root[data-theme="dark"]{--verde:#3f8a4c;--verde2:#1f3324;--verdeT:#8fd19a;--tinta:#e7ece8;--gris:#9aa59d;--linea:#2c342e;--fondo:#121613;--tarjeta:#1b211d;--suave:#252c27;--campo:#3a443d;
+  --rojo:#c4473b;--rojoT:#f08b80;--naranja:#f0a65a;--curso:#2c2116;--cursoL:#6b4a24;--nota:#17243a;--notaL:#2a4268;--notaT:#b8d0f5;--aviso:#e7ece8;--avisoT:#121613;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--fondo);color:var(--tinta);font:17px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--verde);color:var(--blanco);padding:calc(14px + env(safe-area-inset-top)) 16px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
+header h1{font-size:21px;margin:0;flex:1;font-weight:650}
+header button{background:rgba(255,255,255,.16);color:var(--blanco);border:0;border-radius:10px;padding:8px 12px;font:inherit;font-size:16px}
+main{padding:14px 14px calc(90px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto}
+.tarjeta{background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.cli{display:flex;align-items:center;gap:12px}
+.cli .nom{font-weight:650;font-size:18px}
+.cli .sub{color:var(--gris);font-size:15px}
+.cli .info{flex:1;min-width:0}
+.debe{color:var(--rojoT);font-weight:650}
+.aldia{color:var(--verdeT);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:600;background:var(--verde2);color:var(--verdeT);cursor:pointer}
+.btn.prin{background:var(--verde);color:var(--blanco)}
+.btn.rojo{background:var(--rojo);color:var(--blanco)}
+.btn.suave{background:var(--suave);color:var(--tinta)}
+.btn.ancho{width:100%;padding:16px;font-size:18px}
+.btn.peq{padding:8px 12px;font-size:15px}
+.fila{display:flex;gap:10px;flex-wrap:wrap}
+.fila>.btn{flex:1}
+.encurso{background:var(--curso);border-color:var(--cursoL)}
+.encurso .grande{font-size:28px;font-weight:700;color:var(--naranja)}
+h2{font-size:15px;color:var(--gris);text-transform:uppercase;letter-spacing:.04em;margin:18px 4px 8px}
+.vacio{color:var(--gris);text-align:center;padding:30px 10px}
+.mov{display:flex;justify-content:space-between;align-items:center;padding:11px 2px;border-top:1px solid var(--linea)}
+.mov:first-child{border-top:0}
+.mov .d{color:var(--gris);font-size:14px}
+.mov .imp{font-weight:650;white-space:nowrap;margin-left:10px}
+.mov .imp.cobro{color:var(--verdeT)}
+.saldo{font-size:30px;font-weight:700}
+.nota{background:var(--nota);border:1px solid var(--notaL);color:var(--notaT);border-radius:12px;padding:10px 12px;font-size:14px;margin:10px 0}
+label{display:block;font-size:14px;color:var(--gris);margin:12px 2px 4px}
+input,textarea,select{width:100%;font:inherit;padding:12px;border:1px solid var(--campo);border-radius:10px;background:var(--tarjeta);color:var(--tinta)}
+textarea{min-height:70px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cuantos{display:flex;gap:8px;margin:8px 0 4px}
+.cuantos button{flex:1;padding:16px 0;font-size:22px;font-weight:700;border-radius:12px;border:2px solid var(--linea);background:var(--tarjeta);color:var(--tinta)}
+.cuantos button.si{border-color:var(--verde);background:var(--verde2);color:var(--verdeT)}
+#capa{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:20;align-items:flex-end;justify-content:center}
+#capa.ver{display:flex}
+#hoja{background:var(--tarjeta);width:100%;max-width:640px;border-radius:18px 18px 0 0;padding:18px 16px calc(84px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto}
+#hoja h3{margin:0 0 6px;font-size:20px}
+#aviso{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--aviso);color:var(--avisoT);padding:12px 18px;border-radius:12px;font-size:15px;display:none;z-index:30;max-width:90vw;text-align:center}
+.atras{background:none;border:0;color:var(--blanco);font:inherit;font-size:24px;padding:0 6px 0 0}
+.pie{color:var(--gris);font-size:13px;text-align:center;margin-top:20px}
+.marca{display:inline-block;font-size:12px;background:var(--nota);color:var(--notaT);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+</style>
+</head>
+<body>
+<header><button class="atras" id="bAtras" hidden onclick="ir('inicio')">‹</button><h1 id="titulo">Mis trabajos</h1><button id="bAjustes" onclick="ir('ajustes')">⚙</button></header>
+<main id="vista"></main>
+<div id="capa" onclick="if(event.target.id==='capa')cerrar()"><div id="hoja"></div></div>
+<div id="aviso"></div>
+<!-- formulario para que Netlify reciba los fichajes de las casas enlazadas (no se ve) -->
+<form name="fichaje" method="POST" data-netlify="true" netlify-honeypot="trampa" hidden><input name="trampa"><input name="id"><input name="casa"><input name="tipo"><input name="hora"><input name="personas"><input name="lat"><input name="lon"><input name="prec"></form>
+<script>
+"use strict";
+// ======================= datos (solo en este móvil) =======================
+const CLAVE = "mt_datos", COLA = "mt_cola";
+// buzón de Netlify cuando la app está en otro sitio (GitHub); Pagos Particulares lo rellena al publicar. Vacío = este mismo sitio.
+const BUZON = "https://mis-trabajos-v86b.netlify.app/";
+let D = cargar();
+function cargar(){ try{ const d = JSON.parse(localStorage.getItem(CLAVE)); if(d && d.clientes) return d; }catch(e){} return {v:1, clientes:[], trabajos:[], cobros:[], enCurso:null}; }
+function guardar(){ try{ localStorage.setItem(CLAVE, JSON.stringify(D)); }catch(e){ avisar("No he podido guardar: el móvil no deja"); } }
+try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+const cli = id => D.clientes.find(c => c.id === id);
+const eur = v => (Math.round(v*100)/100).toLocaleString("es-ES",{minimumFractionDigits: Math.abs(v%1)>0.001?2:0, maximumFractionDigits:2}) + " €";
+const num = v => (Math.round(v*100)/100).toLocaleString("es-ES",{maximumFractionDigits:2});
+const leerNum = s => { s = String(s||"").replace(/€/g,"").replace(/\s/g,"").replace(",","."); const v = parseFloat(s); return isFinite(v) ? v : NaN; };
+const hoyISO = () => { const d = new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const fechaTxt = f => { const d = new Date(f+"T12:00"); return d.toLocaleDateString("es-ES",{weekday:"short", day:"numeric", month:"short"}); };
+const horaTxt = ms => new Date(ms).toLocaleTimeString("es-ES",{hour:"2-digit", minute:"2-digit"});
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function saldo(id){ let t=0; D.trabajos.forEach(x=>{ if(x.cli===id) t+=x.importe; }); D.cobros.forEach(x=>{ if(x.cli===id) t-=x.importe; }); return Math.round(t*100)/100; }
+function avisar(t){ const a=document.getElementById("aviso"); a.textContent=t; a.style.display="block"; clearTimeout(avisar.t); avisar.t=setTimeout(()=>a.style.display="none", 3500); }
+
+// ======================= casa enlazada (?casa=…) =======================
+// Un cliente puede tener una «casa enlazada»: al empezar y terminar allí se le manda la hora, cuántos sois y dónde estáis.
+// Solo eso; el resto de datos no sale nunca del móvil.
+(function enlace(){
+  const p = new URLSearchParams(location.search), casa = p.get("casa"); if(!casa) return;
+  const nombre = p.get("n") || "Casa enlazada";
+  history.replaceState(null, "", location.pathname);
+  if(D.clientes.some(c => c.casa === casa)) return;
+  anadirCasa.p = {casa, nombre};
+  setTimeout(() => hoja(`<h3>Nuevo cliente: ${esc(nombre)}</h3>
+    <div class="nota">Cuando empecéis y terminéis un trabajo en ${esc(nombre)}, se le avisa de la <b>hora</b>, <b>cuántos sois</b> y <b>dónde estáis</b> (la ubicación del móvil, si la dejas). Nada más: tus otros clientes y tus cuentas no salen de este móvil.</div>
+    <label>Precio por hora (€)</label><input id="fPre" inputmode="decimal" placeholder="por ejemplo 15">
+    <label>Cuántos soléis ir</label><input id="fPer" inputmode="numeric" value="3">
+    <div class="fila" style="margin-top:16px"><button class="btn suave" onclick="cerrar()">Ahora no</button><button class="btn prin" onclick="anadirCasa()">Añadir</button></div>`), 300);
+})();
+function anadirCasa(){
+  const casa = anadirCasa.p.casa, nombre = anadirCasa.p.nombre;
+  const pre = leerNum(document.getElementById("fPre").value), per = parseInt(document.getElementById("fPer").value) || 1;
+  D.clientes.push({id:uid(), nombre, tel:"", precio: isFinite(pre)?pre:0, personas: per, notas:"", casa});
+  guardar(); cerrar(); pintar(); avisar("Añadido " + nombre);
+}
+
+// ======================= fichajes a la casa enlazada =======================
+function ubicacion(){
+  return new Promise(res => {
+    if(!navigator.geolocation) return res(null);
+    navigator.geolocation.getCurrentPosition(p => res(p.coords), () => res(null), {enableHighAccuracy:true, timeout:15000, maximumAge:60000});
+  });
+}
+async function fichar(c, tipo, personas, ms){
+  if(!c.casa) return;
+  const pos = await ubicacion();
+  const f = {id: uid(), casa: c.casa, tipo, hora: new Date(ms).toISOString(), personas: String(personas),
+             lat: pos ? pos.latitude.toFixed(6) : "", lon: pos ? pos.longitude.toFixed(6) : "", prec: pos ? Math.round(pos.accuracy) : ""};
+  const cola = leerCola(); cola.push(f); try{ localStorage.setItem(COLA, JSON.stringify(cola)); }catch(e){}
+  const ok = await mandarCola();
+  avisar(ok ? "Avisado a " + c.nombre + (pos ? "" : " (sin ubicación)") : "Sin conexión: se avisará a " + c.nombre + " en cuanto haya internet");
+}
+function leerCola(){ try{ return JSON.parse(localStorage.getItem(COLA)) || []; }catch(e){ return []; } }
+async function mandarCola(){
+  let cola = leerCola(), quedan = [];
+  for(const f of cola){
+    try{
+      const r = await fetch(BUZON || "/", {method:"POST", mode: BUZON ? "no-cors" : "cors", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body: new URLSearchParams(Object.assign({"form-name":"fichaje"}, f)).toString()});
+      if(!BUZON && !r.ok) quedan.push(f);   // con buzón aparte la respuesta no se puede leer: si no hay error de red, ha llegado
+    }catch(e){ quedan.push(f); }
+  }
+  try{ localStorage.setItem(COLA, JSON.stringify(quedan)); }catch(e){}
+  return quedan.length === 0;
+}
+window.addEventListener("online", mandarCola);
+setTimeout(mandarCola, 2000);
+
+// ======================= trabajar: empezar / terminar =======================
+function empezar(id){
+  const c = cli(id); if(D.enCurso){ avisar("Ya estás trabajando en " + (cli(D.enCurso.cli)||{}).nombre); return; }
+  let n = c.personas || 1;
+  hoja(`<h3>Empezar en ${esc(c.nombre)}</h3><label>¿Cuántos sois?</label>
+    <div class="cuantos" id="cu">${[1,2,3,4,5].map(i=>`<button class="${i===n?"si":""}" onclick="elegir(this,${i})">${i}</button>`).join("")}</div>
+    ${c.casa ? `<div class="nota">Se avisa a ${esc(c.nombre)} de la hora, cuántos sois y dónde estáis.</div>` : ""}
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="empezarYa('${id}')">▶ Empezar</button></div>`);
+  elegir.n = n;
+}
+function elegir(b, i){ elegir.n = i; b.parentNode.querySelectorAll("button").forEach(x => x.classList.toggle("si", x===b)); }
+function empezarYa(id){
+  const ms = Date.now(); D.enCurso = {cli:id, ini: ms, personas: elegir.n}; guardar(); cerrar(); pintar();
+  fichar(cli(id), "llegada", elegir.n, ms);
+}
+function terminar(){
+  const e = D.enCurso; if(!e) return; const c = cli(e.cli); const fin = Date.now();
+  let h = Math.max(0.25, Math.round((fin - e.ini) / 900000) / 4);   // al cuarto de hora
+  hoja(`<h3>Terminar en ${esc(c.nombre)}</h3>
+    <div class="d" style="color:var(--gris)">Empezasteis a las ${horaTxt(e.ini)}; ahora son las ${horaTxt(fin)}.</div>
+    <label>¿Cuántos habéis sido?</label>
+    <div class="cuantos">${[1,2,3,4,5].map(i=>`<button class="${i===e.personas?"si":""}" onclick="elegir(this,${i});calc()">${i}</button>`).join("")}</div>
+    <div class="dos"><div><label>Horas (cada uno)</label><input id="fH" inputmode="decimal" value="${num(h)}" oninput="calc()"></div>
+    <div><label>Precio por hora (€)</label><input id="fP" inputmode="decimal" value="${num(c.precio||0)}" oninput="calc()"></div></div>
+    <label>Importe (€)</label><input id="fI" inputmode="decimal">
+    <label>Nota</label><input id="fN" placeholder="opcional">
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Volver</button><button class="btn rojo" onclick="terminarYa(${fin})">■ Terminar</button></div>
+    <div style="text-align:center;margin-top:10px"><button class="btn peq suave" onclick="cancelarTrabajo()">Descartar (no apuntar nada)</button></div>`);
+  elegir.n = e.personas; calc();
+}
+function calc(){ const h=leerNum(document.getElementById("fH").value), p=leerNum(document.getElementById("fP").value); if(isFinite(h)&&isFinite(p)) document.getElementById("fI").value = num(h*p*(elegir.n||1)); }
+function terminarYa(fin){
+  const e = D.enCurso, c = cli(e.cli);
+  const h = leerNum(document.getElementById("fH").value), imp = leerNum(document.getElementById("fI").value);
+  if(!isFinite(h) || !isFinite(imp)){ avisar("Pon las horas y el importe"); return; }
+  const d = new Date(e.ini), f = d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  D.trabajos.push({id:uid(), cli:c.id, fecha:f, ini:e.ini, fin, horas:h, personas:elegir.n, importe:imp, nota:document.getElementById("fN").value.trim()});
+  const per = elegir.n; D.enCurso = null; guardar(); cerrar(); pintar();
+  fichar(c, "salida", per, fin);
+}
+function cancelarTrabajo(){ preguntar("¿Descartar este trabajo sin apuntarlo?", "Descartar", () => { D.enCurso = null; guardar(); pintar(); }); }
+
+// ======================= altas y apuntes a mano =======================
+function editarCliente(id){
+  const c = id ? cli(id) : {nombre:"", tel:"", precio:"", personas:1, notas:""};
+  hoja(`<h3>${id ? "Cambiar cliente" : "Nuevo cliente"}</h3>
+    <label>Nombre</label><input id="fNom" value="${esc(c.nombre)}" placeholder="por ejemplo Pepe Martínez">
+    <label>Teléfono</label><input id="fTel" type="tel" value="${esc(c.tel)}">
+    <div class="dos"><div><label>Precio por hora (€)</label><input id="fPre" inputmode="decimal" value="${c.precio===""?"":num(c.precio)}"></div>
+    <div><label>Cuántos soléis ir</label><input id="fPer" inputmode="numeric" value="${c.personas||1}"></div></div>
+    <label>Notas</label><textarea id="fNot">${esc(c.notas)}</textarea>
+    ${c.casa ? `<div class="nota">Casa enlazada: al empezar y terminar aquí se le avisa de la hora, cuántos sois y dónde estáis.</div>` : ""}
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarCliente('${id||""}')">Guardar</button></div>
+    ${id ? `<div style="text-align:center;margin-top:12px"><button class="btn peq suave" style="color:var(--rojo)" onclick="borrarCliente('${id}')">Borrar cliente</button></div>` : ""}`);
+}
+function guardarCliente(id){
+  const nombre = document.getElementById("fNom").value.trim(); if(!nombre){ avisar("Pon el nombre"); return; }
+  const pre = leerNum(document.getElementById("fPre").value);
+  const datos = {nombre, tel: document.getElementById("fTel").value.trim(), precio: isFinite(pre)?pre:0, personas: parseInt(document.getElementById("fPer").value)||1, notas: document.getElementById("fNot").value.trim()};
+  if(id) Object.assign(cli(id), datos); else D.clientes.push(Object.assign({id:uid()}, datos));
+  guardar(); cerrar(); pintar();
+}
+function borrarCliente(id){
+  const c = cli(id); preguntar("¿Borrar a " + c.nombre + " con todos sus trabajos y cobros?", "Borrar", () => {
+  D.clientes = D.clientes.filter(x => x.id !== id); D.trabajos = D.trabajos.filter(x => x.cli !== id); D.cobros = D.cobros.filter(x => x.cli !== id);
+  if(D.enCurso && D.enCurso.cli === id) D.enCurso = null;
+  guardar(); ir("inicio"); });
+}
+function trabajoMano(cid, tid){
+  const c = cli(cid), t = tid ? D.trabajos.find(x=>x.id===tid) : {fecha:hoyISO(), horas:2, personas:c.personas||1, importe:"", nota:""};
+  elegir.n = t.personas;
+  hoja(`<h3>${tid ? "Cambiar trabajo" : "Apuntar trabajo"} · ${esc(c.nombre)}</h3>
+    <label>Día</label><input id="fF" type="date" value="${t.fecha}">
+    <label>¿Cuántos fuisteis?</label>
+    <div class="cuantos">${[1,2,3,4,5].map(i=>`<button class="${i===t.personas?"si":""}" onclick="elegir(this,${i});calc()">${i}</button>`).join("")}</div>
+    <div class="dos"><div><label>Horas (cada uno)</label><input id="fH" inputmode="decimal" value="${num(t.horas)}" oninput="calc()"></div>
+    <div><label>Precio por hora (€)</label><input id="fP" inputmode="decimal" value="${num(c.precio||0)}" oninput="calc()"></div></div>
+    <label>Importe (€)</label><input id="fI" inputmode="decimal" value="${t.importe===""?"":num(t.importe)}">
+    <label>Nota</label><input id="fN" value="${esc(t.nota)}" placeholder="opcional">
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarTrabajo('${cid}','${tid||""}')">Guardar</button></div>
+    ${tid ? `<div style="text-align:center;margin-top:12px"><button class="btn peq suave" style="color:var(--rojo)" onclick="borrarMov('trabajos','${tid}','${cid}')">Borrar</button></div>` : ""}`);
+  if(!tid) calc();
+}
+function guardarTrabajo(cid, tid){
+  const h = leerNum(document.getElementById("fH").value), imp = leerNum(document.getElementById("fI").value), f = document.getElementById("fF").value;
+  if(!f || !isFinite(h) || !isFinite(imp)){ avisar("Pon el día, las horas y el importe"); return; }
+  const datos = {fecha:f, horas:h, personas:elegir.n||1, importe:imp, nota:document.getElementById("fN").value.trim()};
+  if(tid) Object.assign(D.trabajos.find(x=>x.id===tid), datos); else D.trabajos.push(Object.assign({id:uid(), cli:cid}, datos));
+  guardar(); cerrar(); pintar();
+}
+function cobro(cid, kid){
+  const c = cli(cid), k = kid ? D.cobros.find(x=>x.id===kid) : {fecha:hoyISO(), importe: Math.max(0, saldo(cid)), nota:""};
+  hoja(`<h3>${kid ? "Cambiar cobro" : "Me ha pagado"} · ${esc(c.nombre)}</h3>
+    <label>Día</label><input id="fF" type="date" value="${k.fecha}">
+    <label>Cantidad (€)</label><input id="fI" inputmode="decimal" value="${k.importe ? num(k.importe) : ""}">
+    <label>Nota</label><input id="fN" value="${esc(k.nota)}" placeholder="opcional (Bizum, efectivo…)">
+    <div class="fila" style="margin-top:14px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn prin" onclick="guardarCobro('${cid}','${kid||""}')">Guardar</button></div>
+    ${kid ? `<div style="text-align:center;margin-top:12px"><button class="btn peq suave" style="color:var(--rojo)" onclick="borrarMov('cobros','${kid}','${cid}')">Borrar</button></div>` : ""}`);
+}
+function guardarCobro(cid, kid){
+  const imp = leerNum(document.getElementById("fI").value), f = document.getElementById("fF").value;
+  if(!f || !isFinite(imp) || imp <= 0){ avisar("Pon el día y la cantidad"); return; }
+  const datos = {fecha:f, importe:imp, nota:document.getElementById("fN").value.trim()};
+  if(kid) Object.assign(D.cobros.find(x=>x.id===kid), datos); else D.cobros.push(Object.assign({id:uid(), cli:cid}, datos));
+  guardar(); cerrar(); pintar();
+}
+function borrarMov(lista, id, cid){ preguntar("¿Borrarlo?", "Borrar", () => { D[lista] = D[lista].filter(x => x.id !== id); guardar(); pintar(); }); }
+
+// ======================= copia de seguridad =======================
+function nombreCopia(){ return "Mis trabajos - copia " + hoyISO() + ".json"; }
+async function guardarCopia(){
+  const txt = JSON.stringify(Object.assign({app:"Mis trabajos", copia: new Date().toISOString()}, D), null, 1);
+  const f = new File([txt], nombreCopia(), {type:"application/json"});
+  try{ if(navigator.canShare && navigator.canShare({files:[f]})){ await navigator.share({files:[f], title:"Copia de Mis trabajos"}); D.ultimaCopia = Date.now(); guardar(); pintar(); return; } }catch(e){ if(e && e.name==="AbortError") return; }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(f); a.download = nombreCopia(); document.body.appendChild(a); a.click(); a.remove();
+  D.ultimaCopia = Date.now(); guardar(); pintar(); avisar("Copia guardada en Descargas");
+}
+function recuperarCopia(input){
+  const f = input.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const d = JSON.parse(r.result); if(!d.clientes || !d.trabajos) throw 0;
+      preguntar("¿Cambiar todo lo de ahora por la copia del " + (d.copia ? new Date(d.copia).toLocaleDateString("es-ES") : "archivo") + "?", "Recuperar", () => {
+        D = {v:1, clientes:d.clientes, trabajos:d.trabajos, cobros:d.cobros||[], enCurso:d.enCurso||null, ultimaCopia:Date.now()};
+        guardar(); ir("inicio"); avisar("Copia recuperada"); });
+    }catch(e){ avisar("Ese archivo no es una copia de Mis trabajos"); }
+  };
+  r.readAsText(f);
+}
+
+// ======================= pantallas =======================
+let vista = "inicio", actual = null;
+function ir(v, id){ vista = v; actual = id || null; window.scrollTo(0,0); pintar(); }
+function hoja(html){ document.getElementById("hoja").innerHTML = html; document.getElementById("capa").classList.add("ver"); }
+// pregunta dentro de la página (los avisos del navegador no salen en todos los móviles)
+function preguntar(txt, si, accion){
+  hoja(`<h3>${esc(txt)}</h3><div class="fila" style="margin-top:16px"><button class="btn suave" onclick="cerrar()">Cancelar</button><button class="btn rojo" id="bSi">${esc(si)}</button></div>`);
+  document.getElementById("bSi").onclick = () => { cerrar(); accion(); };
+}
+function cerrar(){ document.getElementById("capa").classList.remove("ver"); }
+function pintar(){
+  const V = document.getElementById("vista"), T = document.getElementById("titulo");
+  document.getElementById("bAtras").hidden = vista === "inicio";
+  document.getElementById("bAjustes").hidden = vista !== "inicio";
+  if(vista === "cliente" && cli(actual)) return pintarCliente(V, T);
+  if(vista === "ajustes") return pintarAjustes(V, T);
+  vista = "inicio"; T.textContent = "Mis trabajos";
+  let h = "";
+  if(D.enCurso){
+    const c = cli(D.enCurso.cli);
+    h += `<div class="tarjeta encurso"><div style="color:var(--gris);font-size:15px">Trabajando en</div><div class="grande">${esc(c ? c.nombre : "?")}</div>
+      <div style="margin:4px 0 12px">Desde las ${horaTxt(D.enCurso.ini)} · ${D.enCurso.personas} ${D.enCurso.personas===1?"persona":"personas"} · <span id="reloj"></span></div>
+      <button class="btn rojo ancho" onclick="terminar()">■ Terminar</button></div>`;
+  }
+  const total = D.clientes.reduce((t,c)=>t+Math.max(0,saldo(c.id)),0);
+  h += `<h2>Clientes${total>0 ? ` · te deben ${eur(total)}` : ""}</h2>`;
+  if(!D.clientes.length) h += `<div class="tarjeta vacio">Aún no tienes clientes.<br>Pulsa «＋ Nuevo cliente» para empezar.</div>`;
+  D.clientes.slice().sort((a,b)=>a.nombre.localeCompare(b.nombre,"es")).forEach(c => {
+    const s = saldo(c.id);
+    h += `<div class="tarjeta cli"><div class="info" onclick="ir('cliente','${c.id}')"><div class="nom">${esc(c.nombre)}${c.casa?'<span class="marca">enlazado</span>':""}</div>
+      <div class="sub">${s>0.004 ? `<span class="debe">Te debe ${eur(s)}</span>` : s<-0.004 ? `<span class="aldia">A su favor ${eur(-s)}</span>` : `<span class="aldia">Al día</span>`} · ${eur(c.precio||0)}/h</div></div>
+      ${D.enCurso ? "" : `<button class="btn prin" onclick="empezar('${c.id}')">▶ Empezar</button>`}</div>`;
+  });
+  h += `<button class="btn ancho" style="margin-top:6px" onclick="editarCliente()">＋ Nuevo cliente</button>`;
+  const dias = D.ultimaCopia ? Math.floor((Date.now()-D.ultimaCopia)/86400000) : null;
+  if(D.trabajos.length && (dias===null || dias>=14)) h += `<div class="nota" style="margin-top:16px" onclick="ir('ajustes')">${dias===null ? "Aún no has guardado ninguna copia" : "Tu última copia es de hace " + dias + " días"}. Toca aquí para guardar una (por si cambias de móvil).</div>`;
+  V.innerHTML = h; reloj();
+}
+function reloj(){ const r = document.getElementById("reloj"); if(!r || !D.enCurso) return; const m = Math.floor((Date.now()-D.enCurso.ini)/60000); r.textContent = Math.floor(m/60) + " h " + String(m%60).padStart(2,"0") + " min"; }
+setInterval(reloj, 20000);
+function pintarCliente(V, T){
+  const c = cli(actual), s = saldo(c.id); T.textContent = c.nombre;
+  const movs = D.trabajos.filter(x=>x.cli===c.id).map(x=>Object.assign({k:"t"},x)).concat(D.cobros.filter(x=>x.cli===c.id).map(x=>Object.assign({k:"c"},x)))
+    .sort((a,b)=> b.fecha.localeCompare(a.fecha) || (b.ini||0)-(a.ini||0));
+  let h = `<div class="tarjeta"><div style="color:var(--gris);font-size:15px">${s>0.004 ? "Te debe" : s<-0.004 ? "A su favor" : "Al día"}</div>
+    <div class="saldo ${s>0.004?"debe":"aldia"}">${eur(Math.abs(s))}</div>
+    <div style="color:var(--gris);margin-top:4px">${eur(c.precio||0)}/h · ${c.personas||1} ${(c.personas||1)===1?"persona":"personas"}${c.tel ? ` · <a href="tel:${esc(c.tel)}">${esc(c.tel)}</a>` : ""}</div>
+    ${c.notas ? `<div style="margin-top:8px">${esc(c.notas)}</div>` : ""}
+    ${c.casa ? `<div class="nota">Casa enlazada: al empezar y terminar aquí se le avisa de la hora, cuántos sois y dónde estáis.</div>` : ""}</div>
+    ${D.enCurso ? "" : `<button class="btn prin ancho" onclick="empezar('${c.id}')">▶ Empezar a trabajar</button>`}
+    <div class="fila" style="margin-top:10px"><button class="btn" onclick="trabajoMano('${c.id}')">＋ Trabajo</button><button class="btn" onclick="cobro('${c.id}')">€ Me ha pagado</button><button class="btn suave" onclick="editarCliente('${c.id}')">Cambiar</button></div>
+    <h2>Trabajos y cobros</h2><div class="tarjeta">`;
+  if(!movs.length) h += `<div class="vacio">Nada apuntado todavía.</div>`;
+  movs.forEach(m => {
+    if(m.k==="t") h += `<div class="mov" onclick="trabajoMano('${c.id}','${m.id}')"><div><div>${fechaTxt(m.fecha)}${m.ini ? " · " + horaTxt(m.ini) + "–" + horaTxt(m.fin) : ""}</div>
+      <div class="d">${num(m.horas)} h × ${m.personas} ${m.personas===1?"persona":"personas"}${m.nota ? " · " + esc(m.nota) : ""}</div></div><div class="imp">${eur(m.importe)}</div></div>`;
+    else h += `<div class="mov" onclick="cobro('${c.id}','${m.id}')"><div><div>${fechaTxt(m.fecha)}</div><div class="d">Pagado${m.nota ? " · " + esc(m.nota) : ""}</div></div><div class="imp cobro">− ${eur(m.importe)}</div></div>`;
+  });
+  V.innerHTML = h + `</div>`;
+}
+function pintarAjustes(V, T){
+  T.textContent = "Ajustes";
+  const cola = leerCola().length;
+  V.innerHTML = `<h2>Copia de seguridad</h2><div class="tarjeta">
+    <div>Tus clientes y cuentas están <b>solo en este móvil</b>. Guarda una copia de vez en cuando y mándatela por WhatsApp o correo: si cambias de móvil, la recuperas aquí.</div>
+    <div style="color:var(--gris);font-size:14px;margin:8px 0 12px">${D.ultimaCopia ? "Última copia: " + new Date(D.ultimaCopia).toLocaleDateString("es-ES") : "Aún no has guardado ninguna copia."}</div>
+    <button class="btn prin ancho" onclick="guardarCopia()">Guardar copia</button>
+    <label class="btn suave ancho" style="margin-top:10px;color:var(--tinta)">Recuperar una copia<input type="file" accept=".json,application/json" style="display:none" onchange="recuperarCopia(this)"></label></div>
+    <h2>Privacidad</h2><div class="tarjeta" style="font-size:15px">Nadie más ve tus clientes ni tus cuentas: no se mandan a ningún sitio. Solo con los clientes <b>enlazados</b> se les avisa al empezar y terminar (hora, cuántos sois y dónde estáis).${cola ? `<div class="nota">Hay ${cola} aviso(s) esperando a tener internet.</div>` : ""}</div>
+    <div class="pie">Mis trabajos · v1</div>`;
+}
+pintar();
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>
